@@ -37,13 +37,13 @@ const SearchContainer = styled.div`
   border-radius: 10px;
   margin-left: 25px;
   padding: 5px;
-  height: 40%;
+  height: 50%;
 `;
 
 const Input = styled.input`
   border: none;
   outline: none;
-  width: 90%;
+  flex: 9;
   ${mobile({ width: "50px" })}
 
   &:focus {
@@ -108,7 +108,7 @@ const Navbar = () => {
           <Brand>Book Store</Brand>
           <SearchContainer>
             <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16, width: "10%" }} />
+            <Search style={{ color: "gray", fontSize: 16, flex: 1 }} />
           </SearchContainer>
         </Left>
         <Right>

@@ -34,14 +34,12 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/admin/categories")
+    fetch(`${endpoint}/admin/categories`)
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
       })
       .catch((error) => console.error(error));
-
-    console.log(categories);
   }, []);
 
   return (
