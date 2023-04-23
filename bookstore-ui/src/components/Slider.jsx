@@ -6,7 +6,7 @@ import { mobile } from "../responsive";
 
 const Container = styled.div`
   width: 100%;
-  height: 75vh;
+  height: 90vh;
   margin: 10px 0px;
   display: flex;
   position: relative;
@@ -16,7 +16,7 @@ const Container = styled.div`
   ${mobile({ display: "none" })}
 `;
 
-const Arrow = styled.div`
+export const Arrow = styled.div`
   width: 50px;
   height: 50px;
   background-color: #fff7f7;
