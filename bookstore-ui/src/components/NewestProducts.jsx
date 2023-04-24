@@ -32,7 +32,6 @@ const Products = () => {
     fetch(`${endpoint}/user/books`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setPopularProducts(data);
       })
       .catch((error) => console.error(error));

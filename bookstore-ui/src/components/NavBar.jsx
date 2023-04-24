@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Cookies from "js-cookie";
 import { Search, ShoppingCartCheckoutOutlined } from "@mui/icons-material";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -77,8 +78,8 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+  const isLoggedIn = Cookies.get("auth") || false;
   const [showMenu, setShowMenu] = useState(false);
-
   const MenuPopup = styled.div`
     position: absolute;
     top: 60px;
@@ -135,18 +136,29 @@ const Navbar = () => {
               <span>Giỏ hàng</span>
             </MenuItem>
           </CustomNavLink>
-          <MenuItem onClick={() => setShowMenu(!showMenu)}>
-            <PersonOutlineOutlinedIcon />
-            <span>Tài khoản</span>
-          </MenuItem>
-          <MenuPopup>
-            <MenuButton style={{ backgroundColor: "#92cbde" }}>
-              Đăng nhập
-            </MenuButton>
-            <MenuButton style={{ backgroundColor: "#79be8f" }}>
-              Đăng ký
-            </MenuButton>
-          </MenuPopup>
+          {isLoggedIn ? (
+            <CustomNavLink to={"/profile"}>
+              <MenuItem onClick={() => setShowMenu(!showMenu)}>
+                <PersonOutlineOutlinedIcon />
+                <span>Tài khoản</span>
+              </MenuItem>
+            </CustomNavLink>
+          ) : (
+            <>
+              <MenuItem onClick={() => setShowMenu(!showMenu)}>
+                <PersonOutlineOutlinedIcon />
+                <span>Tài khoản</span>
+              </MenuItem>
+              <MenuPopup>
+                <MenuButton style={{ backgroundColor: "#92cbde" }}>
+                  Đăng nhập
+                </MenuButton>
+                <MenuButton style={{ backgroundColor: "#79be8f" }}>
+                  Đăng ký
+                </MenuButton>
+              </MenuPopup>
+            </>
+          )}
         </Right>
       </Wrapper>
     </Container>
