@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Cookies from "js-cookie";
@@ -13,7 +12,6 @@ import icon from "../assets/icon.png";
 import CustomNavLink from "./CustomNavLink";
 
 const Container = styled.div`
-  height: 60px;
   ${mobile({ height: "50px" })}
 `;
 
@@ -67,6 +65,19 @@ const Right = styled.div`
   ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 
+const MenuPopup = styled.div`
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+`;
+
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
@@ -75,23 +86,14 @@ const MenuItem = styled.div`
   flex-direction: column;
   align-items: center;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+
+  &:hover ${MenuPopup} {
+    display: block;
+  }
 `;
 
 const Navbar = () => {
   const isLoggedIn = Cookies.get("auth") || false;
-  const [showMenu, setShowMenu] = useState(false);
-  const MenuPopup = styled.div`
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: white;
-    z-index: 1;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    display: ${showMenu ? "flex" : "none"};
-    flex-direction: column;
-  `;
 
   const MenuButton = styled.div`
     width: 150px;
@@ -138,25 +140,29 @@ const Navbar = () => {
           </CustomNavLink>
           {isLoggedIn ? (
             <CustomNavLink to={"/profile"}>
-              <MenuItem onClick={() => setShowMenu(!showMenu)}>
+              <MenuItem>
                 <PersonOutlineOutlinedIcon />
                 <span>Tài khoản</span>
               </MenuItem>
             </CustomNavLink>
           ) : (
             <>
-              <MenuItem onClick={() => setShowMenu(!showMenu)}>
+              <MenuItem>
                 <PersonOutlineOutlinedIcon />
                 <span>Tài khoản</span>
+                <MenuPopup>
+                  <CustomNavLink to={"/login"}>
+                    <MenuButton style={{ backgroundColor: "#92cbde" }}>
+                      Đăng nhập
+                    </MenuButton>
+                  </CustomNavLink>
+                  <CustomNavLink to={"/register"}>
+                    <MenuButton style={{ backgroundColor: "#79be8f" }}>
+                      Đăng ký
+                    </MenuButton>
+                  </CustomNavLink>
+                </MenuPopup>
               </MenuItem>
-              <MenuPopup>
-                <MenuButton style={{ backgroundColor: "#92cbde" }}>
-                  Đăng nhập
-                </MenuButton>
-                <MenuButton style={{ backgroundColor: "#79be8f" }}>
-                  Đăng ký
-                </MenuButton>
-              </MenuPopup>
             </>
           )}
         </Right>
