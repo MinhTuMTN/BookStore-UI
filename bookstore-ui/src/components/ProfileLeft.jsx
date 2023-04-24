@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { colors } from "../data";
 import styled from "styled-components";
 
@@ -24,16 +25,34 @@ const MenuItem = styled.div`
 
 const ProfileLeft = ({ index }) => {
   const menuItem = [
-    "Thông tin cá nhân",
-    "Đổi mật khẩu",
-    "Chỉnh sửa thông tin cá nhân",
-    "Đăng xuất",
+    {
+      text: "Thông tin cá nhân",
+      link: "/profile",
+    },
+    {
+      text: "Đổi mật khẩu",
+      link: "/change-password",
+    },
+    {
+      text: "Chỉnh sửa thông tin cá nhân",
+      link: "/update-profile",
+    },
+    {
+      text: "Đăng xuất",
+      link: "/logout",
+    },
   ];
   return (
     <div>
       <Left>
         {menuItem.map((item, itemIndex) => (
-          <MenuItem active={index == itemIndex}>{item}</MenuItem>
+          <NavLink
+            to={item.link}
+            key={`profile-left-${itemIndex}`}
+            style={{ textDecoration: "none" }}
+          >
+            <MenuItem active={index == itemIndex}>{item.text}</MenuItem>
+          </NavLink>
         ))}
       </Left>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Search, ShoppingCartCheckoutOutlined } from "@mui/icons-material";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
@@ -8,6 +9,7 @@ import { Badge } from "@mui/material";
 
 import { mobile } from "../responsive";
 import icon from "../assets/icon.png";
+import CustomNavLink from "./CustomNavLink";
 
 const Container = styled.div`
   height: 60px;
@@ -53,6 +55,7 @@ const Input = styled.input`
 
 const Brand = styled.h1`
   font-weight: bold;
+  color: black;
   ${mobile({ fontSize: "24px" })}
 `;
 const Right = styled.div`
@@ -104,26 +107,34 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <img src={icon} alt="" height="100%" />
-          <Brand>Book Store</Brand>
+          <NavLink to={"/"} style={{ height: "100%" }}>
+            <img src={icon} alt="" height="100%" />
+          </NavLink>
+          <NavLink to={"/"} style={{ textDecoration: "none" }}>
+            <Brand>Book Store</Brand>
+          </NavLink>
           <SearchContainer>
             <Input placeholder="Search" />
             <Search style={{ color: "gray", fontSize: 16, flex: 1 }} />
           </SearchContainer>
         </Left>
         <Right>
-          <MenuItem>
-            <Badge badgeContent={4} color="error">
-              <NotificationsOutlinedIcon color="action" />
-            </Badge>
-            <span>Thông báo</span>
-          </MenuItem>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartCheckoutOutlined color="action" />
-            </Badge>
-            <span>Giỏ hàng</span>
-          </MenuItem>
+          <CustomNavLink>
+            <MenuItem>
+              <Badge badgeContent={4} color="error">
+                <NotificationsOutlinedIcon color="action" />
+              </Badge>
+              <span>Thông báo</span>
+            </MenuItem>
+          </CustomNavLink>
+          <CustomNavLink to={"/cart"}>
+            <MenuItem>
+              <Badge badgeContent={4} color="primary">
+                <ShoppingCartCheckoutOutlined color="action" />
+              </Badge>
+              <span>Giỏ hàng</span>
+            </MenuItem>
+          </CustomNavLink>
           <MenuItem onClick={() => setShowMenu(!showMenu)}>
             <PersonOutlineOutlinedIcon />
             <span>Tài khoản</span>

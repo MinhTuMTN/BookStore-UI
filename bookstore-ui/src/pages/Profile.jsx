@@ -62,7 +62,6 @@ const InfoItemContent = styled.span`
 const Profile = () => {
   return (
     <div>
-      <Navbar />
       <Container>
         <Wrapper>
           <ProfileLeft index="0" />
@@ -95,7 +94,6 @@ const Profile = () => {
           </Right>
         </Wrapper>
       </Container>
-      <Footer />
     </div>
   );
 };

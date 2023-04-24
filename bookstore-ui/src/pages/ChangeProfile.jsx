@@ -40,7 +40,6 @@ const Button = styled.div`
 const ChangeProfile = () => {
   return (
     <div>
-      <Navbar />
       <Container>
         <Wrapper>
           <ProfileLeft index="2" />
@@ -72,7 +71,6 @@ const ChangeProfile = () => {
           </Right>
         </Wrapper>
       </Container>
-      <Footer />
     </div>
   );
 };
