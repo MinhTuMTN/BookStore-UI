@@ -78,7 +78,7 @@ const ProductItem = ({ item }) => {
   return (
     <Container>
       <Image src={iconCategory} />
-      <ProductName>{item.title}</ProductName>
+      <ProductName>{item.name}</ProductName>
       <CartButton>Thêm vào giỏ hàng</CartButton>
     </Container>
   );
