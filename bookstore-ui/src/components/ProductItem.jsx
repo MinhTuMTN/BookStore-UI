@@ -38,7 +38,7 @@ const ProductName = styled.div`
   max-lines: 2;
 `;
 
-const CartButton = styled.div`
+export const CartButton = styled.div`
   background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
   border: 0;
   border-radius: 12px;

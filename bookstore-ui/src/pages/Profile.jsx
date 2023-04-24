@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   padding: 20px;
   border-radius: 10px;
 `;
-const Right = styled.div`
+export const Right = styled.div`
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -46,12 +46,12 @@ const Info = styled.div`
   width: 100%;
 `;
 
-const InfoItem = styled.div`
+export const InfoItem = styled.div`
   display: flex;
   width: 100%;
   margin: 10px;
 `;
-const InfoItemLabel = styled.span`
+export const InfoItemLabel = styled.span`
   font-weight: bold;
   flex: 2;
 `;

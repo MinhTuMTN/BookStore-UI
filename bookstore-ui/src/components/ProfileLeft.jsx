@@ -11,9 +11,15 @@ const Left = styled.div`
 
 const MenuItem = styled.div`
   display: block;
+  font-weight: bold;
   padding: 10px;
 
-  color: ${(props) => (props.active ? colors.color1 : "black")};
+  color: ${(props) =>
+    props.active
+      ? colors.color1
+      : props.children === "Đăng xuất"
+      ? "#fb8277"
+      : "black"};
 `;
 
 const ProfileLeft = ({ index }) => {
