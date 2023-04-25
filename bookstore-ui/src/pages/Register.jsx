@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useEffect, useRef, useState } from "react";
 import { mobile } from "../responsive";
 import dogBackground from "../assets/dog_background.jpg";
@@ -92,11 +93,10 @@ const Message = styled.div`
   display: none;
 `;
 
-let first = true;
 const Register = () => {
   const [userName, setUserName] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [address, setAddress] = useState("");
+  // const [fullName, setFullName] = useState("");
+  // const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -106,9 +106,9 @@ const Register = () => {
 
   const handleCreateAccount = () => {
     if (userName.trim() === "") setErrorMessage("Vui lòng nhập username");
-    else if (fullName.trim() === "") setErrorMessage("Vui lòng nhập họ tên");
+    // else if (fullName.trim() === "") setErrorMessage("Vui lòng nhập họ tên");
     else if (email.trim() === "") setErrorMessage("Vui lòng nhập email");
-    else if (address.trim() === "") setErrorMessage("Vui lòng nhập địa chỉ");
+    // else if (address.trim() === "") setErrorMessage("Vui lòng nhập địa chỉ");
     else if (password.trim() === "") setErrorMessage("Vui lòng nhập mật khẩu");
     else if (confirmPassword.trim() === "")
       setErrorMessage("Vui lòng xác nhận mật khẩu");
@@ -116,28 +116,36 @@ const Register = () => {
       setErrorMessage("Mật khẩu không khớp");
     else {
       setErrorMessage("");
+      const data = {
+        username: userName,
+        email: email,
+        password: password,
+        // address: address,
+      };
+
       fetch(`${endpoint}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: {
-          userName: userName,
-          email: email,
-          password: password,
-        },
+        body: JSON.stringify(data),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          setErrorMessage(data.message);
         })
         .catch((error) => {
-          console.error(error);
+          setErrorMessage(error.message);
         });
     }
   };
 
   useEffect(() => {
-    if (errorMessage != "") errorMessageRef.current.style.display = "block";
-    else errorMessageRef.current.style.display = "none";
+    if (errorMessage != "") {
+      errorMessageRef.current.style.display = "flex";
+
+      if (errorMessage.indexOf("successfully") != -1)
+        errorMessageRef.current.style.color = "#37cf60";
+      else errorMessageRef.current.style.color = "#d06262";
+    } else errorMessageRef.current.style.display = "none";
   }, [errorMessage]);
 
   return (
@@ -149,7 +157,11 @@ const Register = () => {
 
         <Title>Tạo tài khoản mới</Title>
         <Message ref={errorMessageRef}>
-          <ErrorOutlineIcon />
+          {errorMessage.indexOf("") === -1 ? (
+            <ErrorOutlineIcon />
+          ) : (
+            <CheckCircleOutlineIcon />
+          )}
           {` ${errorMessage}`}
         </Message>
         <Form>
@@ -158,22 +170,22 @@ const Register = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
-          <Input
+          {/* <Input
             placeholder="Họ tên"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-          />
+          /> */}
           <Input
             placeholder="Email"
             value={email}
             type="email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Input
+          {/* <Input
             placeholder="Địa chỉ"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-          />
+          /> */}
           <Input
             type="password"
             placeholder="Mật khẩu"
