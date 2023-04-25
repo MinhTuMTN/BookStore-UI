@@ -11,6 +11,8 @@ import Register from "./pages/Register";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetail from "./pages/ProductDetail";
 import PaymentSuccessful from "./pages/PaymentSuccessful";
+import ChangePassword from "./pages/ChangePassword";
+import Cart from "./pages/Cart";
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" Component={Home} />
         <Route exact path="/profile" Component={Profile} />
+        <Route exact path="/change-password" Component={ChangePassword} />
         <Route exact path="/update-profile" Component={ChangeProfile} />
         <Route exact path="/logout" Component={Logout} />
         <Route exact path="/login" Component={Login} />

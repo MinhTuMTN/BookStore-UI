@@ -4,12 +4,12 @@ import ProfileLeft from "../components/ProfileLeft";
 import styled from "styled-components";
 import { colors } from "../data";
 
-const Title = styled.span`
+export const Title = styled.span`
   font-weight: bold;
   font-size: 20pt;
 `;
 
-const FormInput = styled.input`
+export const FormInput = styled.input`
   flex: 5;
   border: 2px solid ${colors.color2};
   border-radius: 10px;
@@ -17,17 +17,17 @@ const FormInput = styled.input`
   padding: 4px;
 `;
 
-const Form = styled.div`
+export const Form = styled.div`
   width: 70%;
 `;
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   display: flex;
   width: 102%;
   justify-content: flex-end;
 `;
 
-const Button = styled.div`
+export const Button = styled.div`
   display: block;
   padding: 7px;
   background-color: ${colors.color3};
