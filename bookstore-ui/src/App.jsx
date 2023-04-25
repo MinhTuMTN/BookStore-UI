@@ -29,6 +29,7 @@ const App = () => {
         <Route exact path="/books" Component={ProductsPage} />
         <Route exact path="/books/:id" Component={ProductDetail} />
         <Route exact path="/payment-successful" Component={PaymentSuccessful} />
+        <Route exact path="/cart" Component={Cart} />
       </Routes>
       <Footer />
     </>
