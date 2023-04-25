@@ -18,14 +18,12 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
-  padding: 50px 100px;
+  padding: 50px 110px;
   border: 1px solid;
 `
 
 const Image = styled.img`
-
   object-fit: cover;
-
 `
 
 const InfoContainer = styled.div`
@@ -48,6 +46,7 @@ const Price = styled.p`
   font-size: 30px;
   padding: 10px 0px;
   color: ${colors.color1};
+  font-style: italic;
 `
 
 const HR = styled.hr``
@@ -99,10 +98,6 @@ const AddButton = styled.button`
     background-color: #ececec86;
   }
 `
-
-
-
-
 
 const ProductDetail = () => {
   return (
