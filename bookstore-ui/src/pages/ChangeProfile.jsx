@@ -2,6 +2,7 @@ import React from "react";
 import { Container, InfoItem, InfoItemLabel, Right, Wrapper } from "./Profile";
 import ProfileLeft from "../components/ProfileLeft";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 import { colors } from "../data";
 
 const Title = styled.span`
