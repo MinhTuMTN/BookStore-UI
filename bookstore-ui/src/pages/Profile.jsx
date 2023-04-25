@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../components/NavBar";
-import Footer from "../components/Footer";
 import styled from "styled-components";
 import avatarIcon from "../assets/avatar.jpg";
 import ProfileLeft from "../components/ProfileLeft";
@@ -24,7 +22,7 @@ export const Wrapper = styled.div`
   padding: 20px;
   border-radius: 10px;
 `;
-const Right = styled.div`
+export const Right = styled.div`
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -46,12 +44,12 @@ const Info = styled.div`
   width: 100%;
 `;
 
-const InfoItem = styled.div`
+export const InfoItem = styled.div`
   display: flex;
   width: 100%;
   margin: 10px;
 `;
-const InfoItemLabel = styled.span`
+export const InfoItemLabel = styled.span`
   font-weight: bold;
   flex: 2;
 `;
@@ -62,10 +60,9 @@ const InfoItemContent = styled.span`
 const Profile = () => {
   return (
     <div>
-      <Navbar />
       <Container>
         <Wrapper>
-          <ProfileLeft index="0" />
+          <ProfileLeft index={0} />
           <Right>
             <Avatar src={avatarIcon} />
             <Info>
@@ -95,7 +92,6 @@ const Profile = () => {
           </Right>
         </Wrapper>
       </Container>
-      <Footer />
     </div>
   );
 };

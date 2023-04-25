@@ -1,11 +1,7 @@
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from "@mui/icons-material";
 import styled from "styled-components";
 import { colors } from "../data";
 import iconCategory from "../assets/icon_category.png";
+import CustomNavLink from "./CustomNavLink";
 
 const Container = styled.div`
   flex: 1;
@@ -36,9 +32,10 @@ const ProductName = styled.div`
   text-align: center;
   color: ${colors.color2};
   max-lines: 2;
+  margin: 7px 0px;
 `;
 
-const CartButton = styled.div`
+export const CartButton = styled.div`
   background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
   border: 0;
   border-radius: 12px;
@@ -76,11 +73,13 @@ const CartButton = styled.div`
 `;
 const ProductItem = ({ item }) => {
   return (
-    <Container>
-      <Image src={iconCategory} />
-      <ProductName>{item.name}</ProductName>
-      <CartButton>Thêm vào giỏ hàng</CartButton>
-    </Container>
+    <CustomNavLink to={`/books/${item.id}`}>
+      <Container>
+        <Image src={iconCategory} />
+        <ProductName>{item.title}</ProductName>
+        <CartButton>Thêm vào giỏ hàng</CartButton>
+      </Container>
+    </CustomNavLink>
   );
 };
 
