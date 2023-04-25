@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetail from "./pages/ProductDetail";
+import ChangePassword from "./pages/ChangePassword";
+import Cart from "./pages/Cart";
 
 const App = () => {
   return (
