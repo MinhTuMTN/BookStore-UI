@@ -6,7 +6,7 @@ import { mobile } from "../responsive";
 import dogBackground from "../assets/dog_background.jpg";
 import { colors, endpoint } from "../data";
 import CustomNavLink from "../components/CustomNavLink";
-import logo from "../assets/icon.png";
+import Logo from "../components/Logo";
 
 const Container = styled.div`
   width: 100vw;
@@ -52,15 +52,24 @@ const Agreement = styled.span`
 `;
 
 const Button = styled.div`
-  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
   border: none;
-  padding: 15px 20px;
-  background-color: ${colors.color2};
-  color: white;
   border-radius: 10px;
-  cursor: pointer;
+  color: #fff;
+  line-height: 1.2;
   text-transform: uppercase;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: teal;
+  background: -webkit-linear-gradient(to left, #ffc3a1, #ff6e31);
+  background: -o-linear-gradient(to left, #ffc3a1, #ff6e31);
+  background: -moz-linear-gradient(to left, #ffc3a1, #ff6e31);
+  background: linear-gradient(to left, #ffc3a1, #ff6e31);
+  cursor: pointer;
 `;
 
 const AlreadyAccount = styled.div`
@@ -68,20 +77,6 @@ const AlreadyAccount = styled.div`
   width: 100%;
   text-align: center;
   font-size: 12pt;
-`;
-
-const IconWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-`;
-
-const Icon = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
 `;
 
 const Message = styled.div`
@@ -152,10 +147,7 @@ const Register = () => {
   return (
     <Container>
       <Wrapper>
-        <IconWrapper>
-          <Icon src={logo} />
-        </IconWrapper>
-
+        <Logo />
         <Title>Tạo tài khoản mới</Title>
         <Message ref={errorMessageRef}>
           {errorMessage.indexOf("") === -1 ? (

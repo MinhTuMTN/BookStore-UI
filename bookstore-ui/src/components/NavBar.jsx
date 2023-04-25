@@ -93,7 +93,7 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
-  const isLoggedIn = Cookies.get("auth") || false;
+  const isLoggedIn = Cookies.get("authToken") || false;
 
   const MenuButton = styled.div`
     width: 150px;
