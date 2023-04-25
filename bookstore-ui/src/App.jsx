@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetail from "./pages/ProductDetail";
+import PaymentSuccessful from "./pages/PaymentSuccessful";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path="/register" Component={Register} />
         <Route exact path="/books" Component={ProductsPage} />
         <Route exact path="/books/:id" Component={ProductDetail} />
+        <Route exact path="/payment-successful" Component={PaymentSuccessful} />
       </Routes>
       <Footer />
     </>
