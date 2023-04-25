@@ -10,12 +10,12 @@ import logo from "../assets/icon.png";
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
   background: url(${dogBackground});
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 30px 0px;
 `;
 
 const Wrapper = styled.div`
@@ -95,8 +95,8 @@ const Message = styled.div`
 
 const Register = () => {
   const [userName, setUserName] = useState("");
-  // const [fullName, setFullName] = useState("");
-  // const [address, setAddress] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -106,9 +106,9 @@ const Register = () => {
 
   const handleCreateAccount = () => {
     if (userName.trim() === "") setErrorMessage("Vui lòng nhập username");
-    // else if (fullName.trim() === "") setErrorMessage("Vui lòng nhập họ tên");
+    else if (fullName.trim() === "") setErrorMessage("Vui lòng nhập họ tên");
     else if (email.trim() === "") setErrorMessage("Vui lòng nhập email");
-    // else if (address.trim() === "") setErrorMessage("Vui lòng nhập địa chỉ");
+    else if (address.trim() === "") setErrorMessage("Vui lòng nhập địa chỉ");
     else if (password.trim() === "") setErrorMessage("Vui lòng nhập mật khẩu");
     else if (confirmPassword.trim() === "")
       setErrorMessage("Vui lòng xác nhận mật khẩu");
@@ -120,7 +120,8 @@ const Register = () => {
         username: userName,
         email: email,
         password: password,
-        // address: address,
+        full_name: fullName,
+        address: address,
       };
 
       fetch(`${endpoint}/auth/signup`, {
@@ -170,22 +171,22 @@ const Register = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
-          {/* <Input
+          <Input
             placeholder="Họ tên"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-          /> */}
+          />
           <Input
             placeholder="Email"
             value={email}
             type="email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          {/* <Input
+          <Input
             placeholder="Địa chỉ"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-          /> */}
+          />
           <Input
             type="password"
             placeholder="Mật khẩu"
