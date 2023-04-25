@@ -9,6 +9,7 @@ import Logout from "./pages/Logout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetail from "./pages/ProductDetail";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/login" Component={Login} />
         <Route exact path="/register" Component={Register} />
         <Route exact path="/books" Component={ProductsPage} />
+        <Route exact path="/books/:id" Component={ProductDetail} />
       </Routes>
       <Footer />
     </>

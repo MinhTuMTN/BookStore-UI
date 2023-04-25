@@ -41,13 +41,11 @@ const PageNavigation = ({
   var pageNumberItems = [];
   for (let index = min; index <= max; index++) {
     pageNumberItems.push(
-      <CustomNavLink to={`${urlPattern}?page=${index}`}>
-        <PageNumberItem
-          key={`page-navigation-${index}`}
-          active={current === index}
-        >
-          {index + 1}
-        </PageNumberItem>
+      <CustomNavLink
+        to={`${urlPattern}?page=${index}`}
+        key={`page-navigation-${index}`}
+      >
+        <PageNumberItem active={current === index}>{index + 1}</PageNumberItem>
       </CustomNavLink>
     );
   }
