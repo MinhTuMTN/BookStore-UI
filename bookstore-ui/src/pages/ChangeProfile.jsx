@@ -1,11 +1,8 @@
 import React from "react";
-import Navbar from "../components/NavBar";
 import { Container, InfoItem, InfoItemLabel, Right, Wrapper } from "./Profile";
 import ProfileLeft from "../components/ProfileLeft";
-import Footer from "../components/Footer";
 import styled from "styled-components";
 import { colors } from "../data";
-import { CartButton } from "../components/ProductItem";
 
 const Title = styled.span`
   font-weight: bold;
@@ -42,7 +39,7 @@ const ChangeProfile = () => {
     <div>
       <Container>
         <Wrapper>
-          <ProfileLeft index="2" />
+          <ProfileLeft index={2} />
           <Right
             style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
           >

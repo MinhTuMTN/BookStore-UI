@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../components/NavBar";
-import Footer from "../components/Footer";
 import styled from "styled-components";
 import avatarIcon from "../assets/avatar.jpg";
 import ProfileLeft from "../components/ProfileLeft";
@@ -64,7 +62,7 @@ const Profile = () => {
     <div>
       <Container>
         <Wrapper>
-          <ProfileLeft index="0" />
+          <ProfileLeft index={0} />
           <Right>
             <Avatar src={avatarIcon} />
             <Info>

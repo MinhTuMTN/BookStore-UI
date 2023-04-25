@@ -51,7 +51,7 @@ const ProfileLeft = ({ index }) => {
             key={`profile-left-${itemIndex}`}
             style={{ textDecoration: "none" }}
           >
-            <MenuItem active={index == itemIndex}>{item.text}</MenuItem>
+            <MenuItem active={index === itemIndex}>{item.text}</MenuItem>
           </NavLink>
         ))}
       </Left>
