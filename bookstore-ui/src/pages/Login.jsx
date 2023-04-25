@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { mobile } from "../responsive";
 import background from "../assets/dog_background.jpg";
 import CustomNavLink from "../components/CustomNavLink";
 import Logo from "../components/Logo";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { endpoint } from "../data";
 
@@ -141,7 +139,6 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
 
   const errorMessageRef = useRef();
 
@@ -161,13 +158,19 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status == 200) return response.json();
+          else {
+            setErrorMessage("Username hoặc mật khẩu không chính xác");
+            return;
+          }
+        })
         .then((data) => {
           Cookies.set("authToken", data.authToken);
           window.location = "http://localhost:3000";
         })
         .catch((error) => {
-          setErrorMessage(error.message);
+          setErrorMessage("Username hoặc mật khẩu không chính xác");
         });
     }
   };
