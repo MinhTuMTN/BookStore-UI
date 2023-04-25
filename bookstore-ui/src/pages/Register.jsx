@@ -1,15 +1,13 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import dogBackground from "../assets/dog_background.jpg";
+import { colors } from "../data";
+import CustomNavLink from "../components/CustomNavLink";
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+  background: url(${dogBackground});
   background-size: cover;
   display: flex;
   align-items: center;
@@ -17,60 +15,76 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 50%;
   padding: 20px;
   background-color: white;
+  border-radius: 10px;
   ${mobile({ width: "75%" })}
 `;
 
 const Title = styled.h1`
   font-size: 24px;
-  font-weight: 300;
+  font-weight: bold;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 const Input = styled.input`
   flex: 1;
-  min-width: 40%;
+  width: 100%;
   margin: 20px 10px 0px 0px;
   padding: 10px;
+  border-radius: 10px;
 `;
 
 const Agreement = styled.span`
-  font-size: 12px;
+  font-size: 11pt;
   margin: 20px 0px;
 `;
 
 const Button = styled.button`
-  width: 40%;
+  width: 100%;
   border: none;
   padding: 15px 20px;
-  background-color: teal;
+  background-color: ${colors.color2};
   color: white;
+  border-radius: 10px;
   cursor: pointer;
+  text-transform: uppercase;
+`;
+
+const AlreadyAccount = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 12pt;
 `;
 
 const Register = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>CREATE AN ACCOUNT</Title>
+        <Title>Tạo tài khoản mới</Title>
         <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
+          <Input placeholder="Username" />
+          <Input placeholder="Email" />
+          <Input placeholder="Mật khẩu" />
+          <Input placeholder="Xác nhận lại mật khẩu" />
           <Agreement>
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
+            Bằng cách tạo tài khoản, bạn đã đồng ý với{" "}
+            <b>Chính sách quyền riêng tư</b> của chúng tôi
           </Agreement>
-          <Button>CREATE</Button>
+          <Button>Tạo tài khoản</Button>
+          <AlreadyAccount>
+            Bạn đã có tài khoản?{" "}
+            <CustomNavLink to={"/login"}>
+              <b>Đăng nhập</b>
+            </CustomNavLink>
+          </AlreadyAccount>
         </Form>
       </Wrapper>
     </Container>
