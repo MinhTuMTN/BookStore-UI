@@ -45,9 +45,10 @@ const Image = styled.img`
 const ProductName = styled.span`
   font-size: 20px;
   width: 200px;
-  flex: 3;
+  flex: 4;
   display: flex;
   justify-content: center;
+  padding: 5px;
 `;
 
 const Price = styled.p`
@@ -62,7 +63,7 @@ const AmountContainer = styled.div`
   align-items: center;
   font-weight: 700;
   margin-bottom: 10px;
-  flex: 2;
+  flex: 1;
   justify-content: center;
 `;
 
@@ -156,7 +157,7 @@ const CartItem = ({ cartItem, updateCart }) => {
     <div>
       <Product>
         <ProductDetail>
-          <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
+          <Image src={cartItem.image} />
           <ProductName>
             <CustomNavLink to={`/books/${cartItem.id}`}>
               {cartItem.title}

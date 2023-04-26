@@ -38,6 +38,10 @@ const ProfileLeft = ({ index }) => {
       link: "/update-profile",
     },
     {
+      text: "Đơn hàng của bạn",
+      link: "/orders",
+    },
+    {
       text: "Đăng xuất",
       link: "/logout",
     },

@@ -5,9 +5,8 @@ import CustomNavLink from "./CustomNavLink";
 import Cookies from "js-cookie";
 
 const Container = styled.div`
-  flex: 1;
-  margin: 5px;
-  min-width: 280px;
+  margin: 15px;
+  width: 20%;
   height: 350px;
   display: flex;
   align-items: center;
@@ -19,6 +18,13 @@ const Container = styled.div`
   border-radius: 20px;
 `;
 
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Image = styled.img`
   height: 100%;
   border-radius: 20px;
@@ -32,8 +38,9 @@ const ProductName = styled.div`
   font-size: 15pt;
   text-align: center;
   color: ${colors.color2};
-  max-lines: 2;
   margin: 7px 0px;
+  max-height: 25px;
+  overflow: hidden;
 `;
 
 export const CartButton = styled.div`
@@ -95,7 +102,9 @@ const ProductItem = ({ item }) => {
   return (
     <Container>
       <CustomNavLink to={`/books/${item.id}`} width={"100%"} height={"60%"}>
-        <Image src={iconCategory} />
+        <ImageWrapper>
+          <Image src={item.image} />
+        </ImageWrapper>
       </CustomNavLink>
       <CustomNavLink to={`/books/${item.id}`}>
         <ProductName>{item.title}</ProductName>
