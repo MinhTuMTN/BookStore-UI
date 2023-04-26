@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { colors, endpoint } from "../data";
 import { DeleteOutline } from "@mui/icons-material";
 import Cookies from "js-cookie";
+import CustomNavLink from "./CustomNavLink";
 
 const Product = styled.div`
-  padding: 10px 0px;
+  padding: 10px 10px;
   border: 1px solid #eee;
   border-radius: 50px;
   margin-bottom: 20px;
@@ -24,6 +25,7 @@ const ProductDetail = styled.div`
 
 const DeleteButton = styled.button`
   height: 40px;
+  width: 40px;
   background-color: white;
   cursor: pointer;
   margin-right: 40px;
@@ -37,15 +39,22 @@ const DeleteButton = styled.button`
 
 const Image = styled.img`
   width: 100px;
+  flex: 1;
 `;
 
 const ProductName = styled.span`
   font-size: 20px;
   width: 200px;
+  flex: 3;
+  display: flex;
+  justify-content: center;
 `;
 
 const Price = styled.p`
   font-size: 20px;
+  flex: 2;
+  display: flex;
+  justify-content: center;
 `;
 
 const AmountContainer = styled.div`
@@ -53,13 +62,16 @@ const AmountContainer = styled.div`
   align-items: center;
   font-weight: 700;
   margin-bottom: 10px;
+  flex: 2;
+  justify-content: center;
 `;
 
 const AmountButton = styled.button`
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 30%;
+  font-size: 15pt;
   border: 1px solid ${colors.color2};
   background-color: white;
   &:hover {
@@ -101,6 +113,16 @@ const CartItem = ({ cartItem, updateCart }) => {
       .catch((error) => console.error(error));
   };
 
+  const handleDelete = () => {
+    const data = {
+      book_id: cartItem.id,
+    };
+    handleRequest("DELETE", data);
+    setTimeout(() => {
+      updateCart();
+    }, 100);
+  };
+
   useEffect(() => {
     setTimeout(() => {
       updateCart();
@@ -132,7 +154,11 @@ const CartItem = ({ cartItem, updateCart }) => {
       <Product>
         <ProductDetail>
           <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
-          <ProductName>{cartItem.title}</ProductName>
+          <ProductName>
+            <CustomNavLink to={`/books/${cartItem.id}`}>
+              {cartItem.title}
+            </CustomNavLink>
+          </ProductName>
           <AmountContainer>
             <AmountButton onClick={handleDescrease}>-</AmountButton>
             <Amount>{amount}</Amount>
@@ -142,7 +168,7 @@ const CartItem = ({ cartItem, updateCart }) => {
             {Number(cartItem.cart_details.total).toLocaleString()} VND
           </Price>
         </ProductDetail>
-        <DeleteButton>
+        <DeleteButton onClick={handleDelete}>
           <DeleteOutline />
         </DeleteButton>
       </Product>

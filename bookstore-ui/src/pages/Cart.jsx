@@ -84,7 +84,6 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [numberOfBooks, setNumberOfBooks] = useState(0);
-  const [isUpdate, setIsUpdate] = useState([1]);
 
   const handleGetCart = () => {
     fetch(`${endpoint}/user/cart`, {
@@ -104,8 +103,6 @@ const Cart = () => {
   useEffect(() => {
     handleGetCart();
   }, []);
-
-  useEffect(() => {}, [cartItems]);
 
   const updateCart = () => {
     handleGetCart();
