@@ -19,7 +19,7 @@ const App = () => {
   return (
     <>
       <NavBar />
-      <Dashboard />
+      <Cart />
       {/* <Routes>
         <Route exact path="/" Component={Home} />
         <Route exact path="/profile" Component={Profile} />
