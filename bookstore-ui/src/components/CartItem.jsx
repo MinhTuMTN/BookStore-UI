@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components'
-import { colors } from '../data'
-import { DeleteOutline } from '@mui/icons-material';
+import styled from "styled-components";
+import { colors, endpoint } from "../data";
+import { DeleteOutline } from "@mui/icons-material";
+import Cookies from "js-cookie";
 
 const Product = styled.div`
   padding: 10px 0px;
@@ -77,55 +78,76 @@ const Amount = styled.span`
   margin: 0px 5px;
 `;
 
-const CartItem = () => {
-  const [amount, setAmount] = useState(1);
-    return (
-        <div>
-            <Product>
-                <ProductDetail>
-                    <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
-                    <ProductName>The Art Of War MNBV MNSNA NSAMSN</ProductName>
-                    <AmountContainer>
-                        <AmountButton onClick={() => (amount > 1 ? setAmount(amount - 1) : 1)}
-                        >
-                          -
-                        </AmountButton>
-                        <Amount>{amount}</Amount>
-                        <AmountButton onClick={() => setAmount(amount + 1)}
-                        >
-                          +
-                        </AmountButton>
-                    </AmountContainer>
-                    <Price>100,000 VND</Price>
-                </ProductDetail>
-                <DeleteButton>
-                    <DeleteOutline />
-                </DeleteButton>
-            </Product>
+const CartItem = ({ cartItem, updateCart }) => {
+  const [amount, setAmount] = useState(cartItem.cart_details.quantity);
 
-            <Product>
-                <ProductDetail>
-                    <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
-                    <ProductName>The Art Of War MNBV MNSNA NSAMSN</ProductName>
-                    <AmountContainer>
-                        <AmountButton onClick={() => (amount > 1 ? setAmount(amount - 1) : 1)}
-                        >
-                          -
-                        </AmountButton>
-                        <Amount>{amount}</Amount>
-                        <AmountButton onClick={() => setAmount(amount + 1)}
-                        >
-                          +
-                        </AmountButton>
-                    </AmountContainer>
-                    <Price>100,000 VND</Price>
-                </ProductDetail>
-                <DeleteButton>
-                    <DeleteOutline />
-                </DeleteButton>
-            </Product>
-        </div>
-    )
-}
+  const data = {
+    book_id: cartItem.id,
+    quantity: 1,
+  };
 
-export default CartItem
+  const handleRequest = (method, data) => {
+    console.log(2);
+    fetch(`${endpoint}/user/cart`, {
+      method: method,
+      headers: {
+        authorization: Cookies.get("authToken"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {})
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      updateCart();
+    }, 100);
+  }, [amount]);
+
+  const handleDescrease = () => {
+    if (amount >= 1) {
+      if (amount > 1) {
+        setAmount((prev) => prev - 1);
+        data.quantity = -1;
+        handleRequest("POST", data);
+      } else {
+        handleRequest("DELETE", data);
+        setAmount((prev) => prev - 1);
+      }
+    }
+  };
+
+  const handleIncrease = () => {
+    data.quantity = 1;
+    handleRequest("POST", data);
+    setAmount((prev) => prev + 1);
+    console.log(1);
+  };
+
+  return (
+    <div>
+      <Product>
+        <ProductDetail>
+          <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
+          <ProductName>{cartItem.title}</ProductName>
+          <AmountContainer>
+            <AmountButton onClick={handleDescrease}>-</AmountButton>
+            <Amount>{amount}</Amount>
+            <AmountButton onClick={handleIncrease}>+</AmountButton>
+          </AmountContainer>
+          <Price>
+            {Number(cartItem.cart_details.total).toLocaleString()} VND
+          </Price>
+        </ProductDetail>
+        <DeleteButton>
+          <DeleteOutline />
+        </DeleteButton>
+      </Product>
+    </div>
+  );
+};
+
+export default CartItem;

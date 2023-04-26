@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { colors } from "../data";
+import { colors, endpoint } from "../data";
 import { DeleteOutline } from "@mui/icons-material";
 import CustomNavLink from "../components/CustomNavLink";
 import CartItem from "../components/CartItem";
+import Cookies from "js-cookie";
 
 const Container = styled.div``;
 
@@ -53,12 +54,10 @@ const Products = styled.div`
   padding-right: 10px;
 `;
 
-
-
 const Total = styled.div`
-    flex: 2;
-    padding: 20px;
-    height: 50vh;
+  flex: 2;
+  padding: 20px;
+  height: 50vh;
 `;
 
 const Payment = styled.img`
@@ -82,6 +81,36 @@ const TotalText = styled.span``;
 const TotalPrice = styled.span``;
 
 const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [numberOfBooks, setNumberOfBooks] = useState(0);
+  const [isUpdate, setIsUpdate] = useState([1]);
+
+  const handleGetCart = () => {
+    fetch(`${endpoint}/user/cart`, {
+      headers: {
+        authorization: Cookies.get("authToken"),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCartItems((prev) => data.books);
+        setNumberOfBooks(data.books.length);
+        setTotalAmount(data.total);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    handleGetCart();
+  }, []);
+
+  useEffect(() => {}, [cartItems]);
+
+  const updateCart = () => {
+    handleGetCart();
+  };
+
   return (
     <div>
       <Container>
@@ -91,28 +120,41 @@ const Cart = () => {
             <CustomNavLink to={"/"}>
               <TopButton>TIẾP TỤC MUA SẮM</TopButton>
             </CustomNavLink>
-            <Quantity>3 sản phẩm</Quantity>
+            <Quantity>{numberOfBooks} sản phẩm</Quantity>
             <TopButton type="filled">THANH TOÁN</TopButton>
           </Top>
           <Bottom>
             <Info>
               <Products>
-                <CartItem />
+                {cartItems.map((cartItem, index) => (
+                  <CartItem
+                    cartItem={cartItem}
+                    key={`cart-item-${index}`}
+                    updateCart={updateCart}
+                  />
+                ))}
               </Products>
             </Info>
             <Total>
               <TotalTitle>TỔNG ĐƠN HÀNG</TotalTitle>
               <TotalItem>
                 <TotalText>Tổng tiền các sản phẩm</TotalText>
-                <TotalPrice>300,000 VND</TotalPrice>
+                <TotalPrice>
+                  {Number(totalAmount).toLocaleString()} VND
+                </TotalPrice>
               </TotalItem>
               <TotalItem>
                 <TotalText>Phí vận chuyển</TotalText>
-                <TotalPrice>5,000 VND</TotalPrice>
+                <TotalPrice>{numberOfBooks === 0 ? 0 : "5,000"} VND</TotalPrice>
               </TotalItem>
               <TotalItem type="total">
                 <TotalText>Tổng cộng</TotalText>
-                <TotalPrice>305,000 VND</TotalPrice>
+                <TotalPrice>
+                  {Number(
+                    totalAmount + (numberOfBooks === 0 ? 0 : 5000)
+                  ).toLocaleString()}{" "}
+                  VND
+                </TotalPrice>
               </TotalItem>
               <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
             </Total>
@@ -120,6 +162,6 @@ const Cart = () => {
         </Wrapper>
       </Container>
     </div>
-  )
-}
-export default Cart
+  );
+};
+export default Cart;
