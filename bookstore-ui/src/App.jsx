@@ -14,7 +14,7 @@ import ProductDetail from "./pages/ProductDetail";
 import PaymentSuccessful from "./pages/PaymentSuccessful";
 import ChangePassword from "./pages/ChangePassword";
 import Cart from "./pages/Cart";
-import Dashboard from "./pages/Dashboard"
+import AdminDashboard from "./pages/admin/home/Home";
 
 const UserAuthentication = ({ children }) => {
   if (!Cookies.get("authToken")) {
@@ -29,6 +29,7 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
+        <Route exact path="/admin/dashboard" Component={AdminDashboard} />
         <Route exact path="/" Component={Home} />
         <Route
           exact
