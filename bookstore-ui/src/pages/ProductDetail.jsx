@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import TabProductDetail from "../components/TabProductDetail";
 import { colors, endpoint } from "../data";
 import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Container = styled.div``;
 
@@ -118,6 +119,24 @@ const ProductDetail = () => {
       .catch((error) => console.error(error));
   }, [id]);
 
+  const data = {
+    book_id: Number(id),
+    quantity: amount,
+  };
+
+  const handleAddToCart = () => {
+    fetch(`${endpoint}/user/cart`, {
+      method: "POST",
+      headers: {
+        authorization: Cookies.get("authToken"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <div>
       <Container>
@@ -148,7 +167,7 @@ const ProductDetail = () => {
                   +
                 </AmountButton>
               </AmountContainer>
-              <AddButton>ADD TO CART</AddButton>
+              <AddButton onClick={handleAddToCart}>ADD TO CART</AddButton>
             </AddContainer>
 
             <TabProductDetail book={book} />
