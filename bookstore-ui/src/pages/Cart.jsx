@@ -93,7 +93,7 @@ const Cart = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCartItems((prev) => data.books);
+        setCartItems(data.books);
         setNumberOfBooks(data.books.length);
         setTotalAmount(data.total);
       })

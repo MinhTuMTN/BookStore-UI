@@ -99,7 +99,6 @@ const CartItem = ({ cartItem, updateCart }) => {
   };
 
   const handleRequest = (method, data) => {
-    console.log(2);
     fetch(`${endpoint}/user/cart`, {
       method: method,
       headers: {
@@ -128,6 +127,10 @@ const CartItem = ({ cartItem, updateCart }) => {
       updateCart();
     }, 100);
   }, [amount]);
+
+  useEffect(() => {
+    setAmount(cartItem.cart_details.quantity);
+  }, [cartItem]);
 
   const handleDescrease = () => {
     if (amount >= 1) {
