@@ -101,21 +101,21 @@ const Cart = () => {
               </Products>
             </Info>
             <Total>
-                            <TotalTitle>TỔNG ĐƠN HÀNG</TotalTitle>
-                            <TotalItem>
-                                <TotalText>Tổng tiền các sản phẩm</TotalText>
-                                <TotalPrice>300,000 VND</TotalPrice>
-                            </TotalItem>
-                            <TotalItem>
-                                <TotalText>Phí vận chuyển</TotalText>
-                                <TotalPrice>5,000 VND</TotalPrice>
-                            </TotalItem>
-                            <TotalItem type="total">
-                                <TotalText>Tổng cộng</TotalText>
-                                <TotalPrice>305,000 VND</TotalPrice>
-                            </TotalItem>
-                            <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-                        </Total>
+              <TotalTitle>TỔNG ĐƠN HÀNG</TotalTitle>
+              <TotalItem>
+                <TotalText>Tổng tiền các sản phẩm</TotalText>
+                <TotalPrice>300,000 VND</TotalPrice>
+              </TotalItem>
+              <TotalItem>
+                <TotalText>Phí vận chuyển</TotalText>
+                <TotalPrice>5,000 VND</TotalPrice>
+              </TotalItem>
+              <TotalItem type="total">
+                <TotalText>Tổng cộng</TotalText>
+                <TotalPrice>305,000 VND</TotalPrice>
+              </TotalItem>
+              <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+            </Total>
           </Bottom>
         </Wrapper>
       </Container>

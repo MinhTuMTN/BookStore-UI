@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
 import { colors } from '../data'
 import { DeleteOutline } from '@mui/icons-material';
@@ -78,6 +78,7 @@ const Amount = styled.span`
 `;
 
 const CartItem = () => {
+  const [amount, setAmount] = useState(1);
     return (
         <div>
             <Product>
@@ -85,9 +86,15 @@ const CartItem = () => {
                     <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
                     <ProductName>The Art Of War MNBV MNSNA NSAMSN</ProductName>
                     <AmountContainer>
-                        <AmountButton>-</AmountButton>
-                        <Amount>10</Amount>
-                        <AmountButton>+</AmountButton>
+                        <AmountButton onClick={() => (amount > 1 ? setAmount(amount - 1) : 1)}
+                        >
+                          -
+                        </AmountButton>
+                        <Amount>{amount}</Amount>
+                        <AmountButton onClick={() => setAmount(amount + 1)}
+                        >
+                          +
+                        </AmountButton>
                     </AmountContainer>
                     <Price>100,000 VND</Price>
                 </ProductDetail>
@@ -101,9 +108,15 @@ const CartItem = () => {
                     <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
                     <ProductName>The Art Of War MNBV MNSNA NSAMSN</ProductName>
                     <AmountContainer>
-                        <AmountButton>-</AmountButton>
-                        <Amount>1</Amount>
-                        <AmountButton>+</AmountButton>
+                        <AmountButton onClick={() => (amount > 1 ? setAmount(amount - 1) : 1)}
+                        >
+                          -
+                        </AmountButton>
+                        <Amount>{amount}</Amount>
+                        <AmountButton onClick={() => setAmount(amount + 1)}
+                        >
+                          +
+                        </AmountButton>
                     </AmountContainer>
                     <Price>100,000 VND</Price>
                 </ProductDetail>
