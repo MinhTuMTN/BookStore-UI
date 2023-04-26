@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import paymentIcon from "../assets/paymenticon.png";
 import { colors } from "../data";
+import { Navigate, useLocation } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -15,9 +16,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  width: 70%;
+  width: 50%;
   margin: 100px 0px;
-  padding: 20px;
+  padding: 50px 20px;
   background-color: white;
   align-items: center;
 `;
@@ -45,6 +46,14 @@ const PaymentItemTitle = styled.div`
 `;
 
 const PaymentSuccessful = () => {
+  const { state } = useLocation();
+  if (!state) {
+    return <Navigate to={"/"} replace />;
+  }
+  const dateObject = new Date(state.createdAt);
+  const dateString = `${dateObject.getDate()}/${
+    dateObject.getMonth() + 1
+  }/${dateObject.getFullYear()}`;
   return (
     <Container>
       <Wrapper>
@@ -60,10 +69,11 @@ const PaymentSuccessful = () => {
             Chi tiết đơn hàng:
           </PaymentItemTitle>
           <PaymentItemTitle>
-            <strong>Số tiền: </strong> 100,000 VND
+            <strong>Số tiền: </strong> {Number(state.total).toLocaleString()}{" "}
+            VND
           </PaymentItemTitle>
           <PaymentItemTitle>
-            <strong>Ngày tạo đơn hàng: </strong> 25/04/2023
+            <strong>Ngày tạo đơn hàng: </strong> {dateString}
           </PaymentItemTitle>
         </PaymentInfo>
       </Wrapper>
