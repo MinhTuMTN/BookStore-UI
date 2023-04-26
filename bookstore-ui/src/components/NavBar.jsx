@@ -102,7 +102,7 @@ const Navbar = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #000000;
+    color: white;
     margin: 5px;
   `;
 
@@ -152,12 +152,12 @@ const Navbar = () => {
                 <span>Tài khoản</span>
                 <MenuPopup>
                   <CustomNavLink to={"/login"}>
-                    <MenuButton style={{ backgroundColor: "#92cbde" }}>
+                    <MenuButton style={{ backgroundColor: "#153f4f" }}>
                       Đăng nhập
                     </MenuButton>
                   </CustomNavLink>
                   <CustomNavLink to={"/register"}>
-                    <MenuButton style={{ backgroundColor: "#79be8f" }}>
+                    <MenuButton style={{ backgroundColor: "#e67926" }}>
                       Đăng ký
                     </MenuButton>
                   </CustomNavLink>
