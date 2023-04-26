@@ -6,7 +6,6 @@ import PageNavigation from "../components/PageNavigation";
 const ProductsPage = () => {
   const query = new URLSearchParams(window.location.search);
   var current = query.get("page");
-  console.log(current);
   const [books, setPopularProducts] = useState([]);
   useEffect(() => {
     fetch(`${endpoint}/user/books?limit=12&page=${Number(current) + 1}`)

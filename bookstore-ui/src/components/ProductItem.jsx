@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { colors } from "../data";
+import { colors, endpoint } from "../data";
 import iconCategory from "../assets/icon_category.png";
 import CustomNavLink from "./CustomNavLink";
+import Cookies from "js-cookie";
 
 const Container = styled.div`
   flex: 1;
@@ -19,7 +20,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 60%;
+  height: 100%;
   border-radius: 20px;
 
   z-index: 2;
@@ -72,14 +73,35 @@ export const CartButton = styled.div`
   }
 `;
 const ProductItem = ({ item }) => {
+  const data = {
+    book_id: Number(item.id),
+    quantity: 1,
+  };
+
+  const handleAddToCart = () => {
+    fetch(`${endpoint}/user/cart`, {
+      method: "POST",
+      headers: {
+        authorization: Cookies.get("authToken"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {})
+      .catch((error) => console.error(error));
+  };
+
   return (
-    <CustomNavLink to={`/books/${item.id}`}>
-      <Container>
+    <Container>
+      <CustomNavLink to={`/books/${item.id}`} width={"100%"} height={"60%"}>
         <Image src={iconCategory} />
+      </CustomNavLink>
+      <CustomNavLink to={`/books/${item.id}`}>
         <ProductName>{item.title}</ProductName>
-        <CartButton>Thêm vào giỏ hàng</CartButton>
-      </Container>
-    </CustomNavLink>
+      </CustomNavLink>
+      <CartButton onClick={handleAddToCart}>Thêm vào giỏ hàng</CartButton>
+    </Container>
   );
 };
 
