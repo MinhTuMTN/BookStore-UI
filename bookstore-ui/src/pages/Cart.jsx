@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { colors } from "../data";
-import { DeleteOutline } from "@mui/icons-material";
 import CustomNavLink from "../components/CustomNavLink";
 import CartItem from "../components/CartItem";
 

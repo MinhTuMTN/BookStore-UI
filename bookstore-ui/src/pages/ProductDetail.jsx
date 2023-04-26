@@ -167,7 +167,7 @@ const ProductDetail = () => {
                   +
                 </AmountButton>
               </AmountContainer>
-              <AddButton onClick={handleAddToCart}>ADD TO CART</AddButton>
+              <AddButton onClick={handleAddToCart}>THÊM VÀO GIỎ HÀNG</AddButton>
             </AddContainer>
 
             <TabProductDetail book={book} />
