@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { colors } from "../data";
 import { DeleteOutline } from "@mui/icons-material";
+import CustomNavLink from "../components/CustomNavLink";
 
 const Container = styled.div``;
 
@@ -44,12 +45,13 @@ const Bottom = styled.div`
 
 const Info = styled.div`
   flex: 5;
+  border-right: 3px solid gray;
 `;
 
 const Products = styled.div``;
 
 const Product = styled.div`
-  padding: 40px 0px;
+  padding: 10px 0px;
   border: 1px solid #eee;
   border-radius: 50px;
   margin-bottom: 20px;
@@ -80,7 +82,7 @@ const DeleteButton = styled.button`
 `;
 
 const Image = styled.img`
-  width: 200px;
+  width: 100px;
 `;
 
 const ProductName = styled.span`
@@ -155,7 +157,9 @@ const Cart = () => {
         <Wrapper>
           <TitleCart>GIỎ HÀNG CỦA BẠN</TitleCart>
           <Top>
-            <TopButton>TIẾP TỤC MUA SẮM</TopButton>
+            <CustomNavLink to={"/"}>
+              <TopButton>TIẾP TỤC MUA SẮM</TopButton>
+            </CustomNavLink>
             <Quantity>3 sản phẩm</Quantity>
             <TopButton type="filled">THANH TOÁN</TopButton>
           </Top>
