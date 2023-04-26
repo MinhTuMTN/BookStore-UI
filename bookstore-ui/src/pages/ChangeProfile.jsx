@@ -20,7 +20,7 @@ export const FormInput = styled.input`
   padding: 4px;
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
   width: 70%;
 `;
 
