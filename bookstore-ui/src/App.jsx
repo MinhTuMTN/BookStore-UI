@@ -13,12 +13,14 @@ import ProductDetail from "./pages/ProductDetail";
 import PaymentSuccessful from "./pages/PaymentSuccessful";
 import ChangePassword from "./pages/ChangePassword";
 import Cart from "./pages/Cart";
+import Dashboard from "./pages/Dashboard"
 
 const App = () => {
   return (
     <>
       <NavBar />
-      <Routes>
+      <Dashboard />
+      {/* <Routes>
         <Route exact path="/" Component={Home} />
         <Route exact path="/profile" Component={Profile} />
         <Route exact path="/change-password" Component={ChangePassword} />
@@ -30,7 +32,7 @@ const App = () => {
         <Route exact path="/books/:id" Component={ProductDetail} />
         <Route exact path="/payment-successful" Component={PaymentSuccessful} />
         <Route exact path="/cart" Component={Cart} />
-      </Routes>
+      </Routes> */}
       <Footer />
     </>
   );
