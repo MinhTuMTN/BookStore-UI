@@ -4,7 +4,7 @@ import { colors } from '../data'
 import { DeleteOutline } from '@mui/icons-material';
 
 const Product = styled.div`
-  padding: 40px 0px;
+  padding: 10px 0px;
   border: 1px solid #eee;
   border-radius: 50px;
   margin-bottom: 20px;
@@ -35,7 +35,7 @@ const DeleteButton = styled.button`
 `;
 
 const Image = styled.img`
-  width: 200px;
+  width: 100px;
 `;
 
 const ProductName = styled.span`

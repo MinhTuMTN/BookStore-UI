@@ -28,8 +28,7 @@ const App = () => {
   return (
     <>
       <NavBar />
-      <Cart />
-      {/* <Routes>
+      <Routes>
         <Route exact path="/" Component={Home} />
         <Route
           exact
