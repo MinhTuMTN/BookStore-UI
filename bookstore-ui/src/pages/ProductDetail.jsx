@@ -110,7 +110,7 @@ const ProductDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${endpoint}/user/books/${id}`)
+    fetch(`${endpoint}/user/books/id/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setBook(data);
@@ -123,7 +123,12 @@ const ProductDetail = () => {
       <Container>
         <Wrapper>
           <ImgContainer>
-            <Image src="https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg" />
+            <Image
+              src={
+                book.image ||
+                "https://www.bookgeeks.in/wp-content/uploads/2022/11/The-Art-of-War-by-Sun-Tzu.jpg"
+              }
+            />
           </ImgContainer>
           <InfoContainer>
             <Title>{book.title}</Title>

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import avatarIcon from "../assets/avatar.jpg";
 import ProfileLeft from "../components/ProfileLeft";
+import { endpoint } from "../data";
+import Cookies from "js-cookie";
 
 export const Container = styled.div`
   width: 100%;
   padding: 50px;
   z-index: 1;
   background-color: #eee;
-  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +59,21 @@ const InfoItemContent = styled.span`
 `;
 
 const Profile = () => {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    fetch(`${endpoint}/user/profile`, {
+      headers: {
+        authorization: Cookies.get("authToken"),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <div>
       <Container>
@@ -68,24 +84,30 @@ const Profile = () => {
             <Info>
               <InfoItem>
                 <InfoItemLabel>Họ tên</InfoItemLabel>
-                <InfoItemContent>Nguyễn Văn A</InfoItemContent>
+                <InfoItemContent>
+                  {data.full_name === "tên" ? "" : data.full_name}
+                </InfoItemContent>
               </InfoItem>
               <InfoItem>
                 <InfoItemLabel>Username</InfoItemLabel>
-                <InfoItemContent>nguyenvana</InfoItemContent>
+                <InfoItemContent>{data.username}</InfoItemContent>
               </InfoItem>
               <InfoItem>
                 <InfoItemLabel>Email</InfoItemLabel>
-                <InfoItemContent>a@gmail.com</InfoItemContent>
+                <InfoItemContent>{data.email}</InfoItemContent>
               </InfoItem>
               <InfoItem>
                 <InfoItemLabel>Số điện thoại</InfoItemLabel>
-                <InfoItemContent>0123456789</InfoItemContent>
+                <InfoItemContent>
+                  {data.phone_number === "0" ? "" : data.phone_number}
+                </InfoItemContent>
               </InfoItem>
               <InfoItem>
                 <InfoItemLabel>Địa chỉ</InfoItemLabel>
                 <InfoItemContent>
-                  1 Võ Văn Ngân, Linh Chiểu, TP Thủ Đức, TP HCM
+                  {data.address === "địa chỉ"
+                    ? "1 Võ Văn Ngân, Linh Chiểu, TP Thủ Đức, TP HCM"
+                    : data.address}
                 </InfoItemContent>
               </InfoItem>
             </Info>
