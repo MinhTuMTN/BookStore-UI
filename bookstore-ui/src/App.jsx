@@ -17,6 +17,7 @@ import Cart from "./pages/Cart";
 import AdminDashboard from "./pages/admin/home/Home";
 import AdminUsers from "./pages/admin/list/List";
 import UserOrders from "./pages/UserOrders";
+import OrderDetails from "./pages/OrderDetails";
 
 const UserAuthentication = ({ children }) => {
   if (!Cookies.get("authToken")) {
@@ -58,6 +59,15 @@ const App = () => {
           element={
             <UserAuthentication>
               <UserOrders />
+            </UserAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/orders/:id"
+          element={
+            <UserAuthentication>
+              <OrderDetails />
             </UserAuthentication>
           }
         />

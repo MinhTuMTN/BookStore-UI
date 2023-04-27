@@ -3,8 +3,7 @@ import { Container, Right, Wrapper as ParentWrapper } from "./Profile";
 import { Title } from "./ChangeProfile";
 import ProfileLeft from "../components/ProfileLeft";
 import styled from "styled-components";
-import { colors, endpoint } from "../data";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { endpoint } from "../data";
 import OrderItem from "../components/OrderItem";
 import Cookies from "js-cookie";
 
