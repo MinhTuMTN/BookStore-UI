@@ -15,6 +15,9 @@ import PaymentSuccessful from "./pages/PaymentSuccessful";
 import ChangePassword from "./pages/ChangePassword";
 import Cart from "./pages/Cart";
 import AdminDashboard from "./pages/admin/home/Home";
+import AdminUsers from "./pages/admin/list/List";
+import UserOrders from "./pages/UserOrders";
+import OrderDetails from "./pages/OrderDetails";
 
 const UserAuthentication = ({ children }) => {
   if (!Cookies.get("authToken")) {
@@ -30,6 +33,7 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route exact path="/admin/dashboard" Component={AdminDashboard} />
+        <Route exact path="/admin/users" Component={AdminUsers} />
         <Route exact path="/" Component={Home} />
         <Route
           exact
@@ -46,6 +50,24 @@ const App = () => {
           element={
             <UserAuthentication>
               <ChangePassword />
+            </UserAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/orders"
+          element={
+            <UserAuthentication>
+              <UserOrders />
+            </UserAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/orders/:id"
+          element={
+            <UserAuthentication>
+              <OrderDetails />
             </UserAuthentication>
           }
         />

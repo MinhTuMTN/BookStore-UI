@@ -6,10 +6,10 @@ import CustomNavLink from "./CustomNavLink";
 const Container = styled.div`
   width: 100%;
   padding: 20px 40px;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  justify-content: space-around;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Banner = styled.div`

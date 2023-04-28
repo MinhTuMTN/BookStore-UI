@@ -124,17 +124,17 @@ const Navbar = () => {
         <Right>
           <CustomNavLink>
             <MenuItem>
-              <Badge badgeContent={4} color="error">
-                <NotificationsOutlinedIcon color="action" />
-              </Badge>
+              {/* <Badge badgeContent={4} color="error"> */}
+              <NotificationsOutlinedIcon color="action" />
+              {/* </Badge> */}
               <span>Thông báo</span>
             </MenuItem>
           </CustomNavLink>
           <CustomNavLink to={"/cart"}>
             <MenuItem>
-              <Badge badgeContent={4} color="primary">
-                <ShoppingCartCheckoutOutlined color="action" />
-              </Badge>
+              {/* <Badge badgeContent={4} color="primary"> */}
+              <ShoppingCartCheckoutOutlined color="action" />
+              {/* </Badge> */}
               <span>Giỏ hàng</span>
             </MenuItem>
           </CustomNavLink>
