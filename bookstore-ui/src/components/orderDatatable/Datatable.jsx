@@ -30,7 +30,10 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`/orders/${params.row.id}`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/admin/order/${params.row.id}`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="viewButton">Xem</div>
             </Link>
           </div>
@@ -40,9 +43,7 @@ const Datatable = () => {
   ];
   return (
     <div className="datatable">
-      <div className="datatableTitle">
-        Danh Sách Đơn Hàng
-      </div>
+      <div className="datatableTitle">Danh Sách Đơn Hàng</div>
       <DataGrid
         className="datagrid"
         rows={data}

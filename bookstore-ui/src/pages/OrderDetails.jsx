@@ -51,8 +51,12 @@ const InfoContent = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const OrderDetails = () => {
-  const { id } = useParams();
+const OrderDetails = ({ orderId }) => {
+  const { orderIdParam } = useParams();
+  const [id, setId] = useState(orderIdParam);
+
+  if (orderId) setId(orderId);
+
   const [books, setBooks] = useState([]);
   const [order, setOrder] = useState({});
 

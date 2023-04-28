@@ -21,6 +21,7 @@ import AdminOrders from "./pages/admin/OrderManagement/orderList/List";
 import AdminCategories from "./pages/admin/CategoryManagement/categoryList/List";
 import UserOrders from "./pages/UserOrders";
 import OrderDetails from "./pages/OrderDetails";
+import AdminOrderDetails from "./pages/admin/AdminOrderDetails/AdminOrderDetails/AdminOrderDetails";
 
 const UserAuthentication = ({ children }) => {
   if (!Cookies.get("authToken")) {
@@ -44,6 +45,11 @@ const App = () => {
         <Route exact path="/admin/users" Component={AdminUsers} />
         <Route exact path="/admin/books" Component={AdminProducts} />
         <Route exact path="/admin/order/all" Component={AdminOrders} />
+        <Route
+          exact
+          path="/admin/order/:orderIdParam"
+          Component={AdminOrderDetails}
+        />
         <Route exact path="/admin/categories" Component={AdminCategories} />
         <Route exact path="/" Component={Home} />
         <Route
@@ -75,7 +81,7 @@ const App = () => {
         />
         <Route
           exact
-          path="/orders/:id"
+          path="/orders/:orderIdParam"
           element={
             <UserAuthentication>
               <OrderDetails />

@@ -91,6 +91,11 @@ const Datatable = () => {
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
+      <PageNavigation
+        current={Number(page)}
+        total={999}
+        urlPattern="/admin/books"
+      />
     </div>
   );
 };
