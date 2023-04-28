@@ -34,7 +34,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="" style={{ textDecoration: "none" }}>
+            <Link to={`/orders/${params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">Xem</div>
             </Link>
           </div>

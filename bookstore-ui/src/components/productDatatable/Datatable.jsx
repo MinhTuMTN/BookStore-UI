@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { endpoint } from "../../data";
+import CustomNavLink from "../CustomNavLink";
 
 const Datatable = () => {
   const [data, setData] = useState([]);
@@ -34,9 +35,9 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="" style={{ textDecoration: "none" }}>
+            <CustomNavLink to={`/books/${params.row.id}`} width={"100%"} height={"60%"}>
               <div className="viewButton">Xem</div>
-            </Link>
+            </CustomNavLink>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
