@@ -7,6 +7,7 @@ import { colors } from "../../../data";
 export const Title = styled.span`
   font-weight: bold;
   font-size: 20pt;
+  margin-bottom: 30px;
 `;
 
 export const FormInput = styled.input`
