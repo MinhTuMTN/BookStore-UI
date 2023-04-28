@@ -109,6 +109,35 @@ export const productColumns = [
   }
 ];
 
+export const orderColumns = [
+  { field: "id", headerName: "ID", width: 200 },
+  {
+    field: "user_id",
+    headerName: "ID người mua",
+    width: 200,
+  },
+  {
+    field: "total",
+    headerName: "Tổng tiền (VNĐ)",
+    width: 150,
+  },
+  {
+    field: "total_quantity",
+    headerName: "Số lượng sản phẩm",
+    width: 100,
+  },
+  {
+    field: "createdAt",
+    headerName: "Ngày tạo",
+    width: 200,
+  },
+  {
+    field: "updatedAt",
+    headerName: "Ngày cập nhật",
+    width: 200,
+  }
+];
+
 //temporary data
 export const userRows = [
   {

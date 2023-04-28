@@ -29,19 +29,19 @@ const Datatable = () => {
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action",
+      headerName: "Lựa chọn",
       width: 150,
       renderCell: (params) => {
         return (
           <div className="cellAction">
             <Link to="" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+              <div className="viewButton">Xem</div>
             </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
             >
-              Delete
+              Xóa
             </div>
           </div>
         );
