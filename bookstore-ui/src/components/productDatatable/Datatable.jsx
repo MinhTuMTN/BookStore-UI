@@ -86,13 +86,13 @@ const Datatable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data.filter((row) => row.isDelete === 0)}
+        rows={data}
         columns={productColumns.concat(actionColumn)}
         pagination={{ paginationModel: { pageSize: 25, page: 0 } }}
       />
       <PageNavigation
         current={Number(page)}
-        total={10}
+        total={999}
         urlPattern="/admin/books"
       />
     </div>

@@ -7,7 +7,15 @@ export const userColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.avatar} alt="avatar" />
+          <img
+            className="cellImg"
+            src={
+              params.row.avatar === "avatar"
+                ? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+                : params.row.avatar
+            }
+            alt="avatar"
+          />
         </div>
       );
     },
@@ -27,7 +35,7 @@ export const userColumns = [
     headerName: "Họ và tên",
     width: 180,
   },
-  
+
   {
     field: "phone_number",
     headerName: "Số điện thoại",
@@ -43,11 +51,7 @@ export const userColumns = [
     headerName: "Quyền quản trị",
     width: 120,
     renderCell: (params) => {
-      return (
-        <div>
-          {params.row.isAdmin? "Quản trị viên" : "Người dùng"}
-        </div>
-      );
+      return <div>{params.row.isAdmin ? "Quản trị viên" : "Người dùng"}</div>;
     },
   },
   {
@@ -59,7 +63,7 @@ export const userColumns = [
     field: "updatedAt",
     headerName: "Ngày cập nhật",
     width: 100,
-  }
+  },
 ];
 
 export const productColumns = [
@@ -91,7 +95,7 @@ export const productColumns = [
     headerName: "Giá tiền",
     width: 100,
   },
-  
+
   {
     field: "publication_date",
     headerName: "Ngày xuất bản",
@@ -106,7 +110,7 @@ export const productColumns = [
     field: "updatedAt",
     headerName: "Ngày cập nhật",
     width: 150,
-  }
+  },
 ];
 
 export const orderColumns = [
@@ -135,7 +139,7 @@ export const orderColumns = [
     field: "updatedAt",
     headerName: "Ngày cập nhật",
     width: 200,
-  }
+  },
 ];
 
 //temporary data
@@ -227,9 +231,10 @@ export const userRows = [
     phone_number: "0123456789",
     full_name: "Nguyễn Ngọc Tuyết Vi",
     address: "địa chỉ",
-    avatar: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    avatar:
+      "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     isAdmin: true,
     createdAt: "2023-04-25T14:22:07.000Z",
     updatedAt: "2023-04-25T14:22:07.000Z",
-  }
+  },
 ];
