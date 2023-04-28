@@ -62,6 +62,82 @@ export const userColumns = [
   }
 ];
 
+export const productColumns = [
+  { field: "id", headerName: "ID", width: 70 },
+  {
+    field: "image",
+    headerName: "Ảnh bìa",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.image} alt="image" />
+        </div>
+      );
+    },
+  },
+  {
+    field: "title",
+    headerName: "Tiêu đề",
+    width: 200,
+  },
+  {
+    field: "author",
+    headerName: "Tác giả",
+    width: 150,
+  },
+  {
+    field: "price",
+    headerName: "Giá tiền",
+    width: 100,
+  },
+  
+  {
+    field: "publication_date",
+    headerName: "Ngày xuất bản",
+    width: 150,
+  },
+  {
+    field: "createdAt",
+    headerName: "Ngày tạo",
+    width: 150,
+  },
+  {
+    field: "updatedAt",
+    headerName: "Ngày cập nhật",
+    width: 150,
+  }
+];
+
+export const orderColumns = [
+  { field: "id", headerName: "ID", width: 200 },
+  {
+    field: "user_id",
+    headerName: "ID người mua",
+    width: 200,
+  },
+  {
+    field: "total",
+    headerName: "Tổng tiền (VNĐ)",
+    width: 150,
+  },
+  {
+    field: "total_quantity",
+    headerName: "Số lượng sản phẩm",
+    width: 100,
+  },
+  {
+    field: "createdAt",
+    headerName: "Ngày tạo",
+    width: 200,
+  },
+  {
+    field: "updatedAt",
+    headerName: "Ngày cập nhật",
+    width: 200,
+  }
+];
+
 //temporary data
 export const userRows = [
   {

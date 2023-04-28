@@ -1,10 +1,11 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../datatablesource";
+import { productColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { endpoint } from "../../data";
+import CustomNavLink from "../CustomNavLink";
 
 const Datatable = () => {
   const [data, setData] = useState([]);
@@ -14,7 +15,7 @@ const Datatable = () => {
   };
 
   useEffect(() => {
-    fetch(`${endpoint}/admin/users`, {
+    fetch(`${endpoint}/admin/books`, {
       headers: {
         authorization: Cookies.get("authToken"),
       },
@@ -34,9 +35,9 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <CustomNavLink to={`/books/${params.row.id}`} width={"100%"} height={"60%"}>
               <div className="viewButton">Xem</div>
-            </Link>
+            </CustomNavLink>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
@@ -51,7 +52,7 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Danh sách người dùng
+        Danh sách sản phẩm
         <Link to="/users/new" className="link">
           Add New
         </Link>
@@ -59,7 +60,7 @@ const Datatable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={productColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
