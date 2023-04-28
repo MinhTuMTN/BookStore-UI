@@ -61,14 +61,14 @@ const TabProductDetail = ({ book }) => {
             disabled={currentTab === "1"}
             onClick={handleTabClick}
           >
-            Description
+            Mô tả
           </TabOption>
           <TabOption
             id="2"
             disabled={currentTab === "2"}
             onClick={handleTabClick}
           >
-            Detail
+            Chi tiết sản phẩm
           </TabOption>
         </Tabs>
         <ContentContainer>
@@ -82,9 +82,9 @@ const TabProductDetail = ({ book }) => {
           <DetailContainer key="2">
             {currentTab === "2" && (
               <div>
-                <DetailItem>Author: {book.author}</DetailItem>
-                <DetailItem>Number of pages: 273 pages</DetailItem>
-                <DetailItem>First published: {publication_date}</DetailItem>
+                <DetailItem>Tác giả: {book.author}</DetailItem>
+                <DetailItem>Số trang: 273 pages</DetailItem>
+                <DetailItem>Ngày xuất bản: {publication_date}</DetailItem>
               </div>
             )}
           </DetailContainer>
