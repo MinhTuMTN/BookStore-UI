@@ -32,9 +32,13 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
+        <Route exact path="/" Component={Home} />
+        <Route exact path="/login" Component={Login} />
+        <Route exact path="/register" Component={Register} />
+        <Route exact path="/books" Component={ProductsPage} />
+        <Route exact path="/books/:id" Component={ProductDetail} />
         <Route exact path="/admin/dashboard" Component={AdminDashboard} />
         <Route exact path="/admin/users" Component={AdminUsers} />
-        <Route exact path="/" Component={Home} />
         <Route
           exact
           path="/profile"
@@ -89,10 +93,6 @@ const App = () => {
             </UserAuthentication>
           }
         />
-        <Route exact path="/login" Component={Login} />
-        <Route exact path="/register" Component={Register} />
-        <Route exact path="/books" Component={ProductsPage} />
-        <Route exact path="/books/:id" Component={ProductDetail} />
         <Route
           exact
           path="/payment-successful"
