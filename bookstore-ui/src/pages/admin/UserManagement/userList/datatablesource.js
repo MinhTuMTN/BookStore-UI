@@ -1,41 +1,65 @@
 export const userColumns = [
   { field: "id", headerName: "ID", width: 70 },
   {
-    field: "user",
-    headerName: "User",
-    width: 230,
+    field: "avatar",
+    headerName: "Ảnh đại diện",
+    width: 100,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          <img className="cellImg" src={params.row.avatar} alt="avatar" />
         </div>
       );
     },
+  },
+  {
+    field: "username",
+    headerName: "Tên người dùng",
+    width: 125,
   },
   {
     field: "email",
-    headerName: "Email",
-    width: 230,
+    headerName: "Địa chỉ email",
+    width: 150,
   },
-
   {
-    field: "age",
-    headerName: "Age",
+    field: "full_name",
+    headerName: "Họ và tên",
+    width: 180,
+  },
+  
+  {
+    field: "phone_number",
+    headerName: "Số điện thoại",
     width: 100,
   },
   {
-    field: "status",
-    headerName: "Status",
-    width: 160,
+    field: "address",
+    headerName: "Địa chỉ",
+    width: 100,
+  },
+  {
+    field: "isAdmin",
+    headerName: "Quyền quản trị",
+    width: 120,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
+        <div>
+          {params.row.isAdmin? "Quản trị viên" : "Người dùng"}
         </div>
       );
     },
   },
+  {
+    field: "createdAt",
+    headerName: "Ngày tạo",
+    width: 100,
+  },
+  {
+    field: "updatedAt",
+    headerName: "Ngày cập nhật",
+    width: 100,
+  }
 ];
 
 //temporary data
@@ -120,4 +144,16 @@ export const userRows = [
     status: "active",
     age: 65,
   },
+  {
+    id: "3fbc7e57-d622-4f1c-bd0f-ef7575b62955",
+    username: "tuyetvi1",
+    email: "tuyetvi1@gmail.com",
+    phone_number: "0123456789",
+    full_name: "Nguyễn Ngọc Tuyết Vi",
+    address: "địa chỉ",
+    avatar: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    isAdmin: true,
+    createdAt: "2023-04-25T14:22:07.000Z",
+    updatedAt: "2023-04-25T14:22:07.000Z",
+  }
 ];
