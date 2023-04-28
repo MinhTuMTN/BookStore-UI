@@ -159,8 +159,9 @@ const Login = () => {
         body: JSON.stringify(data),
       })
         .then((response) => {
-          if (response.status == 200) return response.json();
-          else {
+          if (response.status == 200) {
+            return response.json();
+          } else {
             setErrorMessage("Username hoặc mật khẩu không chính xác");
             return;
           }

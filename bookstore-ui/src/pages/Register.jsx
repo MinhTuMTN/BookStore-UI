@@ -124,9 +124,11 @@ const Register = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-        .then((response) => response.json())
-        .then((data) => {
-          setErrorMessage(data.message);
+        .then((response) => {
+          if (response.status == 200) {
+            setErrorMessage("Đăng ký thành công");
+            return response.json();
+          }
         })
         .catch((error) => {
           setErrorMessage(error.message);
@@ -138,7 +140,7 @@ const Register = () => {
     if (errorMessage != "") {
       errorMessageRef.current.style.display = "flex";
 
-      if (errorMessage.indexOf("successfully") != -1)
+      if (errorMessage.indexOf("thành công") != -1)
         errorMessageRef.current.style.color = "#37cf60";
       else errorMessageRef.current.style.color = "#d06262";
     } else errorMessageRef.current.style.display = "none";
