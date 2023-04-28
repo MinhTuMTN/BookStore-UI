@@ -9,10 +9,6 @@ import { endpoint } from "../../data";
 const Datatable = () => {
   const [data, setData] = useState([]);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
-
   useEffect(() => {
     fetch(`${endpoint}/admin/order/all`, {
       headers: {
@@ -56,7 +52,6 @@ const Datatable = () => {
         columns={orderColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

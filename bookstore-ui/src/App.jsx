@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/admin/home/Home";
 import AdminUsers from "./pages/admin/UserManagement/userList/List";
 import AdminProducts from "./pages/admin/ProductManagement/productList/List";
 import AdminOrders from "./pages/admin/OrderManagement/orderList/List";
+import AdminCategories from "./pages/admin/CategoryManagement/categoryList/List";
 import UserOrders from "./pages/UserOrders";
 import OrderDetails from "./pages/OrderDetails";
 
@@ -38,6 +39,7 @@ const App = () => {
         <Route exact path="/admin/users" Component={AdminUsers} />
         <Route exact path="/admin/books" Component={AdminProducts} />
         <Route exact path="/admin/order/all" Component={AdminOrders} />
+        <Route exact path="/admin/categories" Component={AdminCategories} />
         <Route exact path="/" Component={Home} />
         <Route
           exact

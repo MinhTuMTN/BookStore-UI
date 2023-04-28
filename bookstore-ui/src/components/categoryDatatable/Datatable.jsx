@@ -1,6 +1,6 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../datatablesource";
+import { categoryColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
@@ -14,7 +14,7 @@ const Datatable = () => {
   };
 
   useEffect(() => {
-    fetch(`${endpoint}/admin/users`, {
+    fetch(`${endpoint}/admin/categories`, {
       headers: {
         authorization: Cookies.get("authToken"),
       },
@@ -34,9 +34,6 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">Xem</div>
-            </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
@@ -51,7 +48,7 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Danh sách người dùng
+        Danh sách thể loại
         <Link to="/users/new" className="link">
           Add New
         </Link>
@@ -59,7 +56,7 @@ const Datatable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={categoryColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
