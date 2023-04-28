@@ -49,7 +49,7 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Danh Sách Thể Loại
-        <Link to="/users/new" className="link">
+        <Link to="/admin/category/add" className="link">
           Thêm Thể Loại Mới
         </Link>
       </div>

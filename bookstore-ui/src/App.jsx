@@ -19,6 +19,8 @@ import AdminUsers from "./pages/admin/UserManagement/userList/List";
 import AdminProducts from "./pages/admin/ProductManagement/productList/List";
 import AdminOrders from "./pages/admin/OrderManagement/orderList/List";
 import AdminCategories from "./pages/admin/CategoryManagement/categoryList/List";
+import AdminAddProduct from "./pages/admin/ProductManagement/AddProduct";
+import AdminAddCategory from "./pages/admin/CategoryManagement/AddCategory";
 import UserOrders from "./pages/UserOrders";
 import OrderDetails from "./pages/OrderDetails";
 import AdminOrderDetails from "./pages/admin/AdminOrderDetails/AdminOrderDetails/AdminOrderDetails";
@@ -51,6 +53,10 @@ const App = () => {
           Component={AdminOrderDetails}
         />
         <Route exact path="/admin/categories" Component={AdminCategories} />
+
+        <Route exact path="/admin/book/add" Component={AdminAddProduct} />
+        <Route exact path="/admin/category/add" Component={AdminAddCategory} />
+
         <Route exact path="/" Component={Home} />
         <Route
           exact

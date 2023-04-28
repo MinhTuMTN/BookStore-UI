@@ -80,7 +80,7 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Danh Sách Sản Phẩm
-        <Link to="/users/new" className="link">
+        <Link to="/admin/book/add" className="link">
           Thêm Sản Phẩm Mới
         </Link>
       </div>
