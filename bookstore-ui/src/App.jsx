@@ -16,6 +16,7 @@ import ChangePassword from "./pages/ChangePassword";
 import Cart from "./pages/Cart";
 import AdminDashboard from "./pages/admin/home/Home";
 import AdminUsers from "./pages/admin/UserManagement/userList/List";
+import AdminProducts from "./pages/admin/ProductManagement/productList/List";
 import UserOrders from "./pages/UserOrders";
 import OrderDetails from "./pages/OrderDetails";
 
@@ -34,6 +35,7 @@ const App = () => {
       <Routes>
         <Route exact path="/admin/dashboard" Component={AdminDashboard} />
         <Route exact path="/admin/users" Component={AdminUsers} />
+        <Route exact path="/admin/books" Component={AdminProducts} />
         <Route exact path="/" Component={Home} />
         <Route
           exact
