@@ -1,8 +1,8 @@
-import React from "react";
+import React , { useState, useEffect } from "react";
 import { InfoItem, InfoItemLabel, Right } from "../../Profile";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import styled from "styled-components";
-import { colors } from "../../../data";
+import { colors, endpoint } from "../../../data";
 
 export const Title = styled.span`
   font-weight: bold;
@@ -36,8 +36,8 @@ export const Button = styled.div`
   border-radius: 10px;
   cursor: pointer;
 `;
-const AddProduct = () => {
-//   const [data, setData] = useState({});
+const UpdateCategory = () => {
+  const [data, setData] = useState({});
 //   const navigate = useNavigate();
 
 //   const [errorMessage, setErrorMessage] = useState("");
@@ -84,78 +84,52 @@ const AddProduct = () => {
           <Right
             style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
           >
-            <Title>Thêm Sản Phẩm Mới</Title>
+            <Title>Chỉnh Sửa Thông Tin Thể loại</Title>
             <Form>
             <InfoItem>
                 <InfoItemLabel>Đường dẫn hình ảnh</InfoItemLabel>
                 <FormInput
                   placeholder="http://"
-                //   value={data.address}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       address: e.target.value,
-                //     }))
-                //   }
+                  value={data.image}
+                  onChange={(e) =>
+                    setData((prevData) => ({
+                      ...prevData,
+                      image: e.target.value,
+                    }))
+                  }
                 />
               </InfoItem>
               <InfoItem>
-                <InfoItemLabel>Tiêu đề</InfoItemLabel>
+                <InfoItemLabel>Tên thể loại</InfoItemLabel>
                 <FormInput
-                  placeholder={"Cuốn sách"}
-                //   value={data.username}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       username: e.target.value,
-                //     }))
-                //   }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Tác giả</InfoItemLabel>
-                <FormInput
-                  placeholder={"Nguyễn Văn A"}
-                //   value={data.full_name}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       full_name: e.target.value,
-                //     }))
-                //   }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Giá tiền</InfoItemLabel>
-                <FormInput
-                  placeholder="VNĐ"
-                //   value={data.address}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       address: e.target.value,
-                //     }))
-                //   }
+                  placeholder={"Thể loại"}
+                  value={data.name}
+                  onChange={(e) =>
+                    setData((prevData) => ({
+                      ...prevData,
+                      name: e.target.value,
+                    }))
+                  }
                 />
               </InfoItem>
               <InfoItem>
                 <InfoItemLabel>Mô tả</InfoItemLabel>
                 <FormInput
-                  placeholder="Cuốn sách hay"
-                //   value={data.address}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       address: e.target.value,
-                //     }))
-                //   }
+                  placeholder={"Thể loại hay"}
+                  value={data.description}
+                  onChange={(e) =>
+                    setData((prevData) => ({
+                      ...prevData,
+                      description: e.target.value,
+                    }))
+                  }
                 />
               </InfoItem>
               <ButtonWrapper>
                 <Button
                 //  onClick={handleUpdate}
                  >
-                    Thêm Mới
+                    Cập nhật thông tin
                 </Button>
               </ButtonWrapper>
             </Form>
@@ -164,4 +138,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateCategory;

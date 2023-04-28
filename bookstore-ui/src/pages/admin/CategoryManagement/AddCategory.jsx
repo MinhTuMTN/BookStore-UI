@@ -84,7 +84,7 @@ const AddCategory = () => {
           <Right
             style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
           >
-            <Title>Chỉnh Sửa Thông Tin Thể loại</Title>
+            <Title>Thêm Thể Loại Mới</Title>
             <Form>
             <InfoItem>
                 <InfoItemLabel>Đường dẫn hình ảnh</InfoItemLabel>
@@ -129,7 +129,7 @@ const AddCategory = () => {
                 <Button
                 //  onClick={handleUpdate}
                  >
-                    Cập nhật thông tin
+                    Thêm Mới
                 </Button>
               </ButtonWrapper>
             </Form>

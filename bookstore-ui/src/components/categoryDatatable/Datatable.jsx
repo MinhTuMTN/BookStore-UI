@@ -34,6 +34,13 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
+            <Link
+              to="/admin/category/update"
+              className="updateButton"
+              style={{ textDecoration: "none" }}
+            >
+              Chỉnh sửa
+            </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}

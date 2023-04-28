@@ -54,7 +54,7 @@ const Datatable = () => {
     {
       field: "action",
       headerName: "Lựa chọn",
-      width: 150,
+      width: 200,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -65,6 +65,13 @@ const Datatable = () => {
             >
               <div className="viewButton">Xem</div>
             </CustomNavLink>
+            <Link
+              to={`/admin/book/update?id=${params.row.id}`}
+              className="updateButton"
+              style={{ textDecoration: "none" }}
+            >
+              Chỉnh sửa
+            </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
