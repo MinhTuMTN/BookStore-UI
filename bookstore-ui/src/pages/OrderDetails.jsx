@@ -91,11 +91,11 @@ const OrderDetails = () => {
         </Products>
         <InfoWrapper>
           <Info>
-            <InfoLabel>Tổng số sản phẩm</InfoLabel>
+            <InfoLabel>Tổng số sản phẩm:</InfoLabel>
             <InfoContent>{order.total_quantity}</InfoContent>
           </Info>
           <Info>
-            <InfoLabel>Tổng số tiền thanh toán</InfoLabel>
+            <InfoLabel>Tổng số tiền thanh toán:</InfoLabel>
             <InfoContent>
               {Number(order.total).toLocaleString()} VND
             </InfoContent>
