@@ -83,7 +83,7 @@ const TabProductDetail = ({ book }) => {
             {currentTab === "2" && (
               <div>
                 <DetailItem>Tác giả: {book.author}</DetailItem>
-                <DetailItem>Số trang: 273 pages</DetailItem>
+                <DetailItem>Thể loại: {book.categories.map((item) => <div>- {item.name}</div>)}</DetailItem>
                 <DetailItem>Ngày xuất bản: {publication_date}</DetailItem>
               </div>
             )}
