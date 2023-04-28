@@ -1,21 +1,36 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { userColumns } from "../../pages/admin/UserManagement/userList/datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { endpoint } from "../../data";
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  const [data, setData] = useState([]);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
 
+  useEffect(() => {
+    fetch(`${endpoint}/admin/users`, {
+      headers: {
+        authorization: Cookies.get("authToken"),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   const actionColumn = [
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 150,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -36,7 +51,7 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
+        Danh sách người dùng
         <Link to="/users/new" className="link">
           Add New
         </Link>

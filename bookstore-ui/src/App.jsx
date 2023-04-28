@@ -15,7 +15,7 @@ import PaymentSuccessful from "./pages/PaymentSuccessful";
 import ChangePassword from "./pages/ChangePassword";
 import Cart from "./pages/Cart";
 import AdminDashboard from "./pages/admin/home/Home";
-import AdminUsers from "./pages/admin/list/List";
+import AdminUsers from "./pages/admin/UserManagement/userList/List";
 import UserOrders from "./pages/UserOrders";
 import OrderDetails from "./pages/OrderDetails";
 
