@@ -48,10 +48,7 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Danh sách người dùng
-        <Link to="/users/new" className="link">
-          Add New
-        </Link>
+        Danh Sách Người Dùng
       </div>
       <DataGrid
         className="datagrid"
@@ -60,7 +57,6 @@ const Datatable = () => {
         columns={userColumns}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

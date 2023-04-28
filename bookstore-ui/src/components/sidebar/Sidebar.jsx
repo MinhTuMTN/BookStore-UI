@@ -1,10 +1,10 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
 import { Link } from "react-router-dom";
+import { CategoryOutlined } from "@mui/icons-material";
 
 const Sidebar = () => {
   return (
@@ -30,15 +30,17 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/admin/order/all" style={{ textDecoration: "none" }}>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Đơn hàng</span>
-          </li>
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>Đơn hàng</span>
+            </li>
           </Link>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li>
+          <Link to="/admin/categories" style={{ textDecoration: "none" }}>
+            <li>
+              <CategoryOutlined className="icon" />
+              <span>Thể loại</span>
+            </li>
+          </Link>
         </ul>
       </div>
     </div>

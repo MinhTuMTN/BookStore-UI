@@ -79,21 +79,17 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Danh sách sản phẩm
+        Danh Sách Sản Phẩm
         <Link to="/users/new" className="link">
-          Add New
+          Thêm Sản Phẩm Mới
         </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
         columns={productColumns.concat(actionColumn)}
-        pagination={{ paginationModel: { pageSize: 25, page: 0 } }}
-      />
-      <PageNavigation
-        current={Number(page)}
-        total={999}
-        urlPattern="/admin/books"
+        pageSize={9}
+        rowsPerPageOptions={[9]}
       />
     </div>
   );

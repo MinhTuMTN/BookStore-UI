@@ -1,6 +1,6 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { orderColumns } from "../../datatablesource";
+import { categoryColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
@@ -9,8 +9,12 @@ import { endpoint } from "../../data";
 const Datatable = () => {
   const [data, setData] = useState([]);
 
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.id !== id));
+  };
+
   useEffect(() => {
-    fetch(`${endpoint}/admin/order/all`, {
+    fetch(`${endpoint}/admin/categories`, {
       headers: {
         authorization: Cookies.get("authToken"),
       },
@@ -30,9 +34,12 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`/orders/${params.row.id}`} style={{ textDecoration: "none" }}>
-              <div className="viewButton">Xem</div>
-            </Link>
+            <div
+              className="deleteButton"
+              onClick={() => handleDelete(params.row.id)}
+            >
+              Xóa
+            </div>
           </div>
         );
       },
@@ -41,12 +48,15 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Danh Sách Đơn Hàng
+        Danh Sách Thể Loại
+        <Link to="/users/new" className="link">
+          Thêm Thể Loại Mới
+        </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={orderColumns.concat(actionColumn)}
+        columns={categoryColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
