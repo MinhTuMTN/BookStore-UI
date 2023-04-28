@@ -48,9 +48,9 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Danh sách thể loại
+        Danh Sách Thể Loại
         <Link to="/users/new" className="link">
-          Add New
+          Thêm Thể Loại Mới
         </Link>
       </div>
       <DataGrid
