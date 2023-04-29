@@ -53,9 +53,9 @@ const Products = ({
       {hasBanner ? <Banner>{title}</Banner> : ""}
 
       <Container>
-        {books.map((item) => (
-          <ProductItem item={item} key={item.id} />
-        ))}
+        {books != null && books.length > 0
+          ? books.map((item) => <ProductItem item={item} key={item.id} />)
+          : ""}
       </Container>
       {hasButton ? (
         <Wrapper>

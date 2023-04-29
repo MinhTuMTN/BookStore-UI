@@ -24,6 +24,8 @@ import AdminAddCategory from "./pages/admin/CategoryManagement/AddCategory";
 import UserOrders from "./pages/UserOrders";
 import OrderDetails from "./pages/OrderDetails";
 import AdminOrderDetails from "./pages/admin/AdminOrderDetails/AdminOrderDetails/AdminOrderDetails";
+import CategiryBooks from "./pages/CategoryBooks";
+import Search from "./pages/Search";
 
 const UserAuthentication = ({ children }) => {
   if (!Cookies.get("authToken")) {
@@ -41,8 +43,10 @@ const App = () => {
         <Route exact path="/" Component={Home} />
         <Route exact path="/login" Component={Login} />
         <Route exact path="/register" Component={Register} />
+        <Route exact path="/search/:title" Component={Search} />
         <Route exact path="/books" Component={ProductsPage} />
         <Route exact path="/books/:id" Component={ProductDetail} />
+        <Route exact path="/category/:id" Component={CategiryBooks} />
         <Route exact path="/admin/dashboard" Component={AdminDashboard} />
         <Route exact path="/admin/users" Component={AdminUsers} />
         <Route exact path="/admin/books" Component={AdminProducts} />

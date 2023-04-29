@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Cookies from "js-cookie";
 import { Search, ShoppingCartCheckoutOutlined } from "@mui/icons-material";
@@ -30,7 +30,7 @@ const Left = styled.div`
   height: 60px;
 `;
 
-const SearchContainer = styled.div`
+const SearchContainer = styled.form`
   border: 0.5px solid lightgray;
   display: flex;
   flex: 1;
@@ -92,6 +92,10 @@ const MenuItem = styled.div`
   }
 `;
 
+const SearchButton = styled.div`
+  flex: 1;
+`;
+
 const Navbar = () => {
   const isLoggedIn = Cookies.get("authToken") || false;
 
@@ -106,6 +110,13 @@ const Navbar = () => {
     margin: 5px;
   `;
 
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+  const searchMatch = useMatch("/search/:title");
+  useEffect(() => {
+    if (!searchMatch) setQuery("");
+  }, [searchMatch]);
+
   return (
     <Container>
       <Wrapper>
@@ -117,8 +128,24 @@ const Navbar = () => {
             <Brand>Book Store</Brand>
           </NavLink>
           <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16, flex: 1 }} />
+            <Input
+              placeholder="Search"
+              type="text"
+              value={query}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  document.getElementById("btn-search").click();
+                }
+              }}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <SearchButton
+              onClick={() => navigate(`/search/${query}`, { replace: true })}
+              id="btn-search"
+            >
+              <Search style={{ color: "gray", fontSize: 16, flex: 1 }} />
+            </SearchButton>
           </SearchContainer>
         </Left>
         <Right>
