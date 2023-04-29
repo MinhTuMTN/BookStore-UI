@@ -128,10 +128,19 @@ const Register = () => {
           if (response.status == 200) {
             setErrorMessage("Đăng ký thành công");
             return response.json();
+          } else if (response.status === 400) {
+            response.json().then((error) => {
+              const message = error.message;
+
+              if (message.indexOf("Email") !== -1)
+                setErrorMessage("Email đã tồn tại");
+              else if (message.indexOf("Username") !== -1)
+                setErrorMessage("Username đã tồn tại");
+            });
           }
         })
         .catch((error) => {
-          setErrorMessage(error.message);
+          setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
         });
     }
   };

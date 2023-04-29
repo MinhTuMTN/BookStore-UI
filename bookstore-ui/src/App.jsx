@@ -35,6 +35,14 @@ const UserAuthentication = ({ children }) => {
   return children;
 };
 
+const AdminAuthentication = ({ children }) => {
+  if (!Cookies.get("authToken") || !Cookies.get("isAdmin")) {
+    return <Navigate to={"/login"} replace />;
+  }
+
+  return children;
+};
+
 const App = () => {
   return (
     <>
@@ -47,19 +55,79 @@ const App = () => {
         <Route exact path="/books" Component={ProductsPage} />
         <Route exact path="/books/:id" Component={ProductDetail} />
         <Route exact path="/category/:id" Component={CategiryBooks} />
-        <Route exact path="/admin/dashboard" Component={AdminDashboard} />
-        <Route exact path="/admin/users" Component={AdminUsers} />
-        <Route exact path="/admin/books" Component={AdminProducts} />
-        <Route exact path="/admin/order/all" Component={AdminOrders} />
+        <Route
+          exact
+          path="/admin/dashboard"
+          element={
+            <AdminAuthentication>
+              <AdminDashboard />
+            </AdminAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/admin/users"
+          element={
+            <AdminAuthentication>
+              <AdminUsers />
+            </AdminAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/admin/books"
+          element={
+            <AdminAuthentication>
+              <AdminProducts />
+            </AdminAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/admin/order/all"
+          element={
+            <AdminAuthentication>
+              <AdminOrders />
+            </AdminAuthentication>
+          }
+        />
         <Route
           exact
           path="/admin/order/:orderIdParam"
-          Component={AdminOrderDetails}
+          element={
+            <AdminAuthentication>
+              <AdminOrderDetails />
+            </AdminAuthentication>
+          }
         />
-        <Route exact path="/admin/categories" Component={AdminCategories} />
+        <Route
+          exact
+          path="/admin/categories"
+          element={
+            <AdminAuthentication>
+              <AdminCategories />
+            </AdminAuthentication>
+          }
+        />
 
-        <Route exact path="/admin/book/add" Component={AdminAddProduct} />
-        <Route exact path="/admin/category/add" Component={AdminAddCategory} />
+        <Route
+          exact
+          path="/admin/book/add"
+          element={
+            <AdminAuthentication>
+              <AdminAddProduct />
+            </AdminAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/admin/category/add"
+          element={
+            <AdminAuthentication>
+              <AdminAddCategory />
+            </AdminAuthentication>
+          }
+        />
 
         <Route exact path="/" Component={Home} />
         <Route
