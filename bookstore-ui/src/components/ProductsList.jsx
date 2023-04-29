@@ -47,7 +47,6 @@ const Products = ({
   hasBanner = true,
   hasButton = false,
 }) => {
-  console.log(books);
   return (
     <>
       {hasBanner ? <Banner>{title}</Banner> : ""}
