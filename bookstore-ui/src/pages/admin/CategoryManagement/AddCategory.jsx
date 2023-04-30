@@ -72,7 +72,7 @@ const AddCategory = () => {
       <Sidebar />
 
       <Right style={{ alignItems: "flex-start", justifyContent: "flex-start" }}>
-        <Title>Chỉnh Sửa Thông Tin Thể loại</Title>
+        <Title>Thêm Thể loại Mới</Title>
         <ErrorMessage
           errorMessage={errorMessage}
           display={errorMessage == "" ? "none" : "flex"}

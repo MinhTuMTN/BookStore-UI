@@ -74,7 +74,7 @@ const AddProduct = () => {
       <Sidebar />
 
       <Right style={{ alignItems: "flex-start", justifyContent: "flex-start" }}>
-        <Title>Chỉnh Sửa Thông Tin Sản Phẩm</Title>
+        <Title>Thêm Sản Phẩm Mới</Title>
         <ErrorMessage
           errorMessage={errorMessage}
           display={errorMessage == "" ? "none" : "flex"}

@@ -46,11 +46,9 @@ const UpdateProduct = () => {
 
   const { id } = useParams();
 
-
-
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {}, [errorMessage]);
+  useEffect(() => { }, [errorMessage]);
 
   useEffect(() => {
     fetch(`${endpoint}/admin/books/${id}`)
@@ -64,105 +62,105 @@ const UpdateProduct = () => {
   const dateObj = new Date(data.publication_date);
   const publication_date = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1)
     .padStart(2, "0")}-${String(dateObj.getDate())
-    .padStart(2, "0")}`;
+      .padStart(2, "0")}`;
 
-    const handleUpdateBook = () => {
-      fetch(`${endpoint}/admin/books/id/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: Cookies.get("authToken"),
-        },
-        body: JSON.stringify(data),
-      })
-        .then((response) => {
-          if (response.status == 200) {
-            navigate("/admin/books");
-            return;
-          } else {
-            setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
-          }
-        })
-        .catch((error) => {
+  const handleUpdateBook = () => {
+    fetch(`${endpoint}/admin/books/id/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: Cookies.get("authToken"),
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          navigate("/admin/books");
+          return;
+        } else {
           setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
-        });
-    };
+        }
+      })
+      .catch((error) => {
+        setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
+      });
+  };
 
   return (
     <div className="list">
       <Sidebar />
 
-          <Right
-            style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
-          >
-            <Title>Chỉnh Sửa Thông Tin Sản Phẩm</Title>
-            <Form>
-            <InfoItem>
-                <InfoItemLabel>Đường dẫn hình ảnh</InfoItemLabel>
-                <FormInput
-                  placeholder="http://"
-                  value={data.image}
-                  onChange={(e) =>
-                    setData((prevData) => ({
-                      ...prevData,
-                      image: e.target.value,
-                    }))
-                  }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Tiêu đề</InfoItemLabel>
-                <FormInput
-                  placeholder={"Cuốn sách"}
-                  value={data.title}
-                  onChange={(e) =>
-                    setData((prevData) => ({
-                      ...prevData,
-                      title: e.target.value,
-                    }))
-                  }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Tác giả</InfoItemLabel>
-                <FormInput
-                  placeholder={"Nguyễn Văn A"}
-                  value={data.author}
-                  onChange={(e) =>
-                    setData((prevData) => ({
-                      ...prevData,
-                      author: e.target.value,
-                    }))
-                  }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Giá tiền</InfoItemLabel>
-                <FormInput
-                  placeholder="VNĐ"
-                  value={data.price}
-                  onChange={(e) =>
-                    setData((prevData) => ({
-                      ...prevData,
-                      price: e.target.value,
-                    }))
-                  }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Mô tả</InfoItemLabel>
-                <FormInput
-                  placeholder="Cuốn sách hay"
-                  value={data.description}
-                  onChange={(e) =>
-                    setData((prevData) => ({
-                      ...prevData,
-                      description: e.target.value,
-                    }))
-                  }
-                />
-              </InfoItem>
-              <InfoItem>
+      <Right
+        style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
+      >
+        <Title>Chỉnh Sửa Thông Tin Sản Phẩm</Title>
+        <Form>
+          <InfoItem>
+            <InfoItemLabel>Đường dẫn hình ảnh</InfoItemLabel>
+            <FormInput
+              placeholder="http://"
+              value={data.image}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  image: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <InfoItem>
+            <InfoItemLabel>Tiêu đề</InfoItemLabel>
+            <FormInput
+              placeholder={"Cuốn sách"}
+              value={data.title}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  title: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <InfoItem>
+            <InfoItemLabel>Tác giả</InfoItemLabel>
+            <FormInput
+              placeholder={"Nguyễn Văn A"}
+              value={data.author}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  author: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <InfoItem>
+            <InfoItemLabel>Giá tiền</InfoItemLabel>
+            <FormInput
+              placeholder="VNĐ"
+              value={data.price}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  price: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <InfoItem>
+            <InfoItemLabel>Mô tả</InfoItemLabel>
+            <FormInput
+              placeholder="Cuốn sách hay"
+              value={data.description}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  description: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <InfoItem>
             <InfoItemLabel>Ngày xuất bản</InfoItemLabel>
             <FormInput
               type="date"
@@ -175,15 +173,15 @@ const UpdateProduct = () => {
               }
             />
           </InfoItem>
-              <ButtonWrapper>
-                <Button
-                 onClick={handleUpdateBook}
-                 >
-                    Cập nhật thông tin
-                </Button>
-              </ButtonWrapper>
-            </Form>
-          </Right>
+          <ButtonWrapper>
+            <Button
+              onClick={handleUpdateBook}
+            >
+              Cập nhật thông tin
+            </Button>
+          </ButtonWrapper>
+        </Form>
+      </Right>
     </div>
   );
 };

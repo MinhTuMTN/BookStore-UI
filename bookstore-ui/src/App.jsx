@@ -112,7 +112,7 @@ const App = () => {
           }
         />
 
-        <Route exact path="/admin/category/update" Component={AdminUpdateCategory} />
+        <Route exact path="/admin/category/update/:id" Component={AdminUpdateCategory} />
         <Route exact path="/admin/book/update/:id" Component={AdminUpdateProduct} />
         <Route
           exact
