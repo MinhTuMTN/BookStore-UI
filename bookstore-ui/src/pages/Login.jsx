@@ -168,7 +168,22 @@ const Login = () => {
         })
         .then((data) => {
           Cookies.set("authToken", data.authToken);
-          window.location = "http://localhost:3000";
+
+          fetch(`${endpoint}/user/profile`, {
+            headers: { authorization: Cookies.get("authToken") },
+          })
+            .then((response) => {
+              if (response.status === 200) {
+                return response.json();
+              }
+            })
+            .then((data) => {
+              const isAdmin = data["isAdmin"];
+              if (isAdmin) {
+                Cookies.set("isAdmin", true);
+                window.location = "http://localhost:3000/admin/dashboard";
+              } else window.location = "http://localhost:3000";
+            });
         })
         .catch((error) => {
           setErrorMessage("Username hoặc mật khẩu không chính xác");

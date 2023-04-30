@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { InfoItem, InfoItemLabel, Right } from "../../Profile";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import styled from "styled-components";
-import { colors } from "../../../data";
+import { colors, endpoint } from "../../../data";
+import ErrorMessage from "../../../components/ErrorMessage";
+import { useNavigate } from "react-router";
+import Cookies from "js-cookie";
 
 export const Title = styled.span`
   font-weight: bold;
@@ -37,103 +40,89 @@ export const Button = styled.div`
   cursor: pointer;
 `;
 const AddCategory = () => {
-//   const [data, setData] = useState({});
-//   const navigate = useNavigate();
+  const [data, setData] = useState({});
+  const navigate = useNavigate();
 
-//   const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-//   useEffect(() => {}, [errorMessage]);
+  useEffect(() => {}, [errorMessage]);
 
-//   useEffect(() => {
-//     fetch(`${endpoint}/user/profile`, {
-//       headers: {
-//         authorization: Cookies.get("authToken"),
-//       },
-//     })
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setData(data);
-//       })
-//       .catch((error) => console.error(error));
-//   }, []);
-
-//   const handleUpdate = () => {
-//     fetch(`${endpoint}/user/profile`, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//         authorization: Cookies.get("authToken"),
-//       },
-//       body: JSON.stringify(data),
-//     })
-//       .then((response) => {
-//         if (response.status == 200) {
-//           navigate("/profile");
-//           return;
-//         }
-//       })
-//       .catch((error) => {
-//         setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
-//       });
-//   };
+  const handleCreateCategory = () => {
+    fetch(`${endpoint}/admin/categories/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: Cookies.get("authToken"),
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          navigate("/admin/categories");
+          return;
+        } else setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
+      })
+      .catch((error) => {
+        setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
+      });
+  };
 
   return (
     <div className="list">
       <Sidebar />
 
-          <Right
-            style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
-          >
-            <Title>Thêm Thể Loại Mới</Title>
-            <Form>
-            <InfoItem>
-                <InfoItemLabel>Đường dẫn hình ảnh</InfoItemLabel>
-                <FormInput
-                  placeholder="http://"
-                //   value={data.address}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       address: e.target.value,
-                //     }))
-                //   }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Tên thể loại</InfoItemLabel>
-                <FormInput
-                  placeholder={"Thể loại"}
-                //   value={data.username}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       username: e.target.value,
-                //     }))
-                //   }
-                />
-              </InfoItem>
-              <InfoItem>
-                <InfoItemLabel>Mô tả</InfoItemLabel>
-                <FormInput
-                  placeholder={"Thể loại hay"}
-                //   value={data.full_name}
-                //   onChange={(e) =>
-                //     setData((prevData) => ({
-                //       ...prevData,
-                //       full_name: e.target.value,
-                //     }))
-                //   }
-                />
-              </InfoItem>
-              <ButtonWrapper>
-                <Button
-                //  onClick={handleUpdate}
-                 >
-                    Thêm Mới
-                </Button>
-              </ButtonWrapper>
-            </Form>
-          </Right>
+      <Right style={{ alignItems: "flex-start", justifyContent: "flex-start" }}>
+        <Title>Chỉnh Sửa Thông Tin Thể loại</Title>
+        <ErrorMessage
+          errorMessage={errorMessage}
+          display={errorMessage == "" ? "none" : "flex"}
+        />
+
+        <Form>
+          <InfoItem>
+            <InfoItemLabel>Đường dẫn hình ảnh</InfoItemLabel>
+            <FormInput
+              placeholder="http://"
+              value={data.image}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  image: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <InfoItem>
+            <InfoItemLabel>Tên thể loại</InfoItemLabel>
+            <FormInput
+              placeholder={"Thể loại"}
+              value={data.name}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  name: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <InfoItem>
+            <InfoItemLabel>Mô tả</InfoItemLabel>
+            <FormInput
+              placeholder={"Thể loại hay"}
+              value={data.description}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  description: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
+          <ButtonWrapper>
+            <Button onClick={handleCreateCategory}>Cập nhật thông tin</Button>
+          </ButtonWrapper>
+        </Form>
+      </Right>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import categoryIcon from "../assets/icon_category.png";
+import CustomNavLink from "./CustomNavLink";
 
 const Container = styled.div`
   flex: 1;
@@ -30,8 +31,10 @@ const CategoryName = styled.span`
 const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Image src={categoryIcon} />
-      <CategoryName>{item.name}</CategoryName>
+      <Image src={item.image ? item.image : categoryIcon} />
+      <CategoryName>
+        <CustomNavLink to={`category/${item.id}`}>{item.name}</CustomNavLink>
+      </CategoryName>
     </Container>
   );
 };

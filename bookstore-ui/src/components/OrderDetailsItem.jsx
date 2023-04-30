@@ -30,7 +30,6 @@ const ProductName = styled.span`
   width: 200px;
   flex: 4;
   display: flex;
-  justify-content: center;
   padding: 5px;
 `;
 
@@ -78,7 +77,7 @@ const OrderDetailsItem = ({ book }) => {
   return (
     <Product>
       <ProductDetail>
-        <Image src={book.image} />
+        <Image src={book.image} style={{ marginRight: "10px" }} />
         <ProductName>
           <CustomNavLink to={`/books/${book.id}`}>{book.title}</CustomNavLink>
         </ProductName>

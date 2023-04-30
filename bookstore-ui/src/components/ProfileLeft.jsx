@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { colors } from "../data";
 import styled from "styled-components";
+import Cookies from "js-cookie";
 
 const Left = styled.div`
   flex: 1;
@@ -46,6 +47,12 @@ const ProfileLeft = ({ index }) => {
       link: "/logout",
     },
   ];
+
+  if (Cookies.get("isAdmin"))
+    menuItem.splice(4, 0, {
+      text: "Trang quản trị",
+      link: "/admin/dashboard",
+    });
   return (
     <div>
       <Left>
