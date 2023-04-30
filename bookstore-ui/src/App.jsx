@@ -112,8 +112,24 @@ const App = () => {
           }
         />
 
-        <Route exact path="/admin/category/update/:id" Component={AdminUpdateCategory} />
-        <Route exact path="/admin/book/update/:id" Component={AdminUpdateProduct} />
+        <Route
+          exact
+          path="/admin/category/update/:id"
+          element={
+            <AdminAuthentication>
+              <AdminUpdateCategory />
+            </AdminAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/admin/book/update/:id"
+          element={
+            <AdminAuthentication>
+              <AdminUpdateProduct />
+            </AdminAuthentication>
+          }
+        />
         <Route
           exact
           path="/admin/book/add"
