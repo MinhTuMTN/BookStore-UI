@@ -6,6 +6,7 @@ import { colors, endpoint } from "../../../data";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../../../components/ErrorMessage";
+import { useParams } from "react-router-dom";
 
 export const Title = styled.span`
   font-weight: bold;
@@ -43,42 +44,49 @@ const UpdateProduct = () => {
   const [data, setData] = useState({});
   const navigate = useNavigate();
 
+  const { id } = useParams();
+
+
+
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {}, [errorMessage]);
 
   useEffect(() => {
-    fetch(`${endpoint}/admin/books/:id`, {
-      headers: {
-        authorization: Cookies.get("authToken"),
-      },
-    })
+    fetch(`${endpoint}/admin/books/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [id]);
 
-//   const handleUpdate = () => {
-//     fetch(`${endpoint}/user/profile`, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//         authorization: Cookies.get("authToken"),
-//       },
-//       body: JSON.stringify(data),
-//     })
-//       .then((response) => {
-//         if (response.status == 200) {
-//           navigate("/profile");
-//           return;
-//         }
-//       })
-//       .catch((error) => {
-//         setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
-//       });
-//   };
+  const dateObj = new Date(data.publication_date);
+  const publication_date = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1)
+    .padStart(2, "0")}-${String(dateObj.getDate())
+    .padStart(2, "0")}`;
+
+    const handleUpdateBook = () => {
+      fetch(`${endpoint}/admin/books/id/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: Cookies.get("authToken"),
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          if (response.status == 200) {
+            navigate("/admin/books");
+            return;
+          } else {
+            setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
+          }
+        })
+        .catch((error) => {
+          setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
+        });
+    };
 
   return (
     <div className="list">
@@ -154,9 +162,22 @@ const UpdateProduct = () => {
                   }
                 />
               </InfoItem>
+              <InfoItem>
+            <InfoItemLabel>Ngày xuất bản</InfoItemLabel>
+            <FormInput
+              type="date"
+              value={publication_date}
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  publication_date: e.target.value,
+                }))
+              }
+            />
+          </InfoItem>
               <ButtonWrapper>
                 <Button
-                //  onClick={handleUpdate}
+                 onClick={handleUpdateBook}
                  >
                     Cập nhật thông tin
                 </Button>

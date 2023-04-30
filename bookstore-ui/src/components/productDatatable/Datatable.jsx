@@ -66,7 +66,7 @@ const Datatable = () => {
               <div className="viewButton">Xem</div>
             </CustomNavLink>
             <Link
-              to={`/admin/book/update?id=${params.row.id}`}
+              to={`/admin/book/update/${params.row.id}`}
               className="updateButton"
               style={{ textDecoration: "none" }}
             >
