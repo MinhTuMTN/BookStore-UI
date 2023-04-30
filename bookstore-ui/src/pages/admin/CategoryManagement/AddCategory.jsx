@@ -57,7 +57,7 @@ const AddCategory = () => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           navigate("/admin/categories");
           return;
         } else setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
@@ -75,7 +75,7 @@ const AddCategory = () => {
         <Title>Thêm Thể loại Mới</Title>
         <ErrorMessage
           errorMessage={errorMessage}
-          display={errorMessage == "" ? "none" : "flex"}
+          display={errorMessage === "" ? "none" : "flex"}
         />
 
         <Form>

@@ -1,7 +1,7 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { productColumns } from "../../datatablesource";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { endpoint } from "../../data";
@@ -37,7 +37,7 @@ const Datatable = () => {
       },
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           handleGetBooks();
         }
       })
@@ -48,7 +48,8 @@ const Datatable = () => {
 
   useEffect(() => {
     handleGetBooks();
-  }, [page]);
+    // eslint-disable-next-line
+  }, [page]); 
 
   const actionColumn = [
     {

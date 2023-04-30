@@ -57,7 +57,7 @@ const AddProduct = () => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           navigate("/admin/books");
           return;
         } else {
@@ -77,7 +77,7 @@ const AddProduct = () => {
         <Title>Thêm Sản Phẩm Mới</Title>
         <ErrorMessage
           errorMessage={errorMessage}
-          display={errorMessage == "" ? "none" : "flex"}
+          display={errorMessage === "" ? "none" : "flex"}
         />
 
         <Form>

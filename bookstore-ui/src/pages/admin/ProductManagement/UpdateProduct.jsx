@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { colors, endpoint } from "../../../data";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import ErrorMessage from "../../../components/ErrorMessage";
 import { useParams } from "react-router-dom";
 
 export const Title = styled.span`
@@ -74,7 +73,7 @@ const UpdateProduct = () => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           navigate("/admin/books");
           return;
         } else {
