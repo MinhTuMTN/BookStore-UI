@@ -9,11 +9,7 @@ import { endpoint } from "../../data";
 const Datatable = () => {
   const [data, setData] = useState([]);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
-
-  useEffect(() => {
+  const handleGetCategories = () => {
     fetch(`${endpoint}/admin/categories`, {
       headers: {
         authorization: Cookies.get("authToken"),
@@ -24,7 +20,29 @@ const Datatable = () => {
         setData(data);
       })
       .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    handleGetCategories();
   }, []);
+
+  const handleDelete = (id) => {
+    fetch(`${endpoint}/admin/categories/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: Cookies.get("authToken"),
+      },
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          handleGetCategories();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const actionColumn = [
     {
