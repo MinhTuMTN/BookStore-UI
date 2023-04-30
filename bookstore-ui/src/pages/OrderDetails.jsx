@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Container, Wrapper } from "./Profile";
 import styled from "styled-components";
 import { colors, endpoint } from "../data";
-import CartItem from "../components/CartItem";
 import OrderDetailsItem from "../components/OrderDetailsItem";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -72,12 +71,12 @@ const OrderDetails = ({ orderId }) => {
         setBooks(data.books);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [id]);
 
   var dateString = "27/04/2023";
   if (order.createdAt) {
     const dateObject = new Date(order.createdAt);
-    var dateString = `${dateObject.getDate()}/${
+    dateString = `${dateObject.getDate()}/${
       dateObject.getMonth() + 1
     }/${dateObject.getFullYear()}`;
   }

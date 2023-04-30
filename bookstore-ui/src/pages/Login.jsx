@@ -44,12 +44,6 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const ImgLogo = styled.img`
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-`;
-
 const Form = styled.form`
   margin-top: 10px;
   width: 100%;
@@ -159,7 +153,7 @@ const Login = () => {
         body: JSON.stringify(data),
       })
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             return response.json();
           } else {
             setErrorMessage("Username hoặc mật khẩu không chính xác");
@@ -192,7 +186,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (errorMessage != "") {
+    if (errorMessage !== "") {
       errorMessageRef.current.style.display = "flex";
     } else errorMessageRef.current.style.display = "none";
   }, [errorMessage]);

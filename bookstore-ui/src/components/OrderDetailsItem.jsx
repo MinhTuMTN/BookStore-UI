@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../data";
 import CustomNavLink from "./CustomNavLink";
 
 const Product = styled.div`
@@ -47,20 +46,6 @@ const AmountContainer = styled.div`
   margin-bottom: 10px;
   flex: 1;
   justify-content: center;
-`;
-
-const AmountButton = styled.button`
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border-radius: 30%;
-  font-size: 15pt;
-  border: 1px solid ${colors.color2};
-  background-color: white;
-  &:hover {
-    background-color: ${colors.color2};
-    color: white;
-  }
 `;
 
 const Amount = styled.span`

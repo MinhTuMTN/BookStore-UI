@@ -25,10 +25,10 @@ const ChangePassword = () => {
   const errorMessageRef = useRef();
 
   useEffect(() => {
-    if (errorMessage != "") {
+    if (errorMessage !== "") {
       errorMessageRef.current.style.display = "flex";
 
-      if (errorMessage.indexOf("thành công") != -1)
+      if (errorMessage.indexOf("thành công") !== -1)
         errorMessageRef.current.style.color = "#37cf60";
       else errorMessageRef.current.style.color = "#d06262";
     } else errorMessageRef.current.style.display = "none";
@@ -60,7 +60,7 @@ const ChangePassword = () => {
         body: JSON.stringify(data),
       })
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             setErrorMessage("Đổi mật khẩu thành công");
             return response.json();
           } else {

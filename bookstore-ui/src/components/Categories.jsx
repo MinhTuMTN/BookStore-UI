@@ -44,9 +44,9 @@ const Categories = () => {
 
   return (
     <Container>
-      {categories.map((item) => (
+      {categories && categories.length > 0 ? categories.map((item) => (
         <CategoryItem item={item} key={item.id} />
-      ))}
+      )) : <p></p>}
     </Container>
   );
 };

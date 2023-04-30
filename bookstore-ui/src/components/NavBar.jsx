@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import { Search, ShoppingCartCheckoutOutlined } from "@mui/icons-material";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import { Badge } from "@mui/material";
 
 import { mobile } from "../responsive";
 import icon from "../assets/icon.png";

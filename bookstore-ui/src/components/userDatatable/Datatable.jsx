@@ -1,17 +1,12 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns } from "../../datatablesource";
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { endpoint } from "../../data";
 
 const Datatable = () => {
   const [data, setData] = useState([]);
-
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
 
   useEffect(() => {
     fetch(`${endpoint}/admin/users`, {
@@ -26,25 +21,6 @@ const Datatable = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Lựa chọn",
-      width: 150,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Xóa
-            </div>
-          </div>
-        );
-      },
-    },
-  ];
   return (
     <div className="datatable">
       <div className="datatableTitle">

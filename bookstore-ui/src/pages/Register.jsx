@@ -4,7 +4,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useEffect, useRef, useState } from "react";
 import { mobile } from "../responsive";
 import dogBackground from "../assets/dog_background.jpg";
-import { colors, endpoint } from "../data";
+import { endpoint } from "../data";
 import CustomNavLink from "../components/CustomNavLink";
 import Logo from "../components/Logo";
 
@@ -125,7 +125,7 @@ const Register = () => {
         body: JSON.stringify(data),
       })
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             setErrorMessage("Đăng ký thành công");
             return response.json();
           } else if (response.status === 400) {
@@ -146,10 +146,10 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (errorMessage != "") {
+    if (errorMessage !== "") {
       errorMessageRef.current.style.display = "flex";
 
-      if (errorMessage.indexOf("thành công") != -1)
+      if (errorMessage.indexOf("thành công") !== -1)
         errorMessageRef.current.style.color = "#37cf60";
       else errorMessageRef.current.style.color = "#d06262";
     } else errorMessageRef.current.style.display = "none";
