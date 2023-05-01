@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, InfoItem, InfoItemLabel, Right, Wrapper } from "./Profile";
 import ProfileLeft from "../components/ProfileLeft";
 import styled from "styled-components";
@@ -69,7 +69,7 @@ const ChangeProfile = () => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           navigate("/profile");
           return;
         }
@@ -90,7 +90,7 @@ const ChangeProfile = () => {
             <Title>Chỉnh sửa thông tin cá nhân</Title>
             <ErrorMessage
               errorMessage={errorMessage}
-              display={errorMessage == "" ? "none" : "flex"}
+              display={errorMessage === "" ? "none" : "flex"}
             />
             <Form>
               <InfoItem>

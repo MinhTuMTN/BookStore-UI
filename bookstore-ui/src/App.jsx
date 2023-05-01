@@ -20,6 +20,8 @@ import AdminProducts from "./pages/admin/ProductManagement/productList/List";
 import AdminOrders from "./pages/admin/OrderManagement/orderList/List";
 import AdminCategories from "./pages/admin/CategoryManagement/categoryList/List";
 import AdminAddProduct from "./pages/admin/ProductManagement/AddProduct";
+import AddCategoryBook from "./pages/admin/ProductManagement/AddCategoriesToProduct";
+import DeleteCategoryBook from "./pages/admin/ProductManagement/DeleteCategoriesToProduct";
 import AdminAddCategory from "./pages/admin/CategoryManagement/AddCategory";
 import AdminUpdateCategory from "./pages/admin/CategoryManagement/UpdateCategory";
 import AdminUpdateProduct from "./pages/admin/ProductManagement/UpdateProduct";
@@ -57,6 +59,9 @@ const App = () => {
         <Route exact path="/books" Component={ProductsPage} />
         <Route exact path="/books/:id" Component={ProductDetail} />
         <Route exact path="/category/:id" Component={CategiryBooks} />
+
+        <Route exact path="/admin/books/:id/categories/add" Component={AddCategoryBook} />
+        <Route exact path="/admin/books/:id/categories/delete" Component={DeleteCategoryBook} />
         <Route
           exact
           path="/admin/dashboard"

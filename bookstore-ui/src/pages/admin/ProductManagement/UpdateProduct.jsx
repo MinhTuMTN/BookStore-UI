@@ -39,6 +39,27 @@ export const Button = styled.div`
   border-radius: 10px;
   cursor: pointer;
 `;
+
+export const CategoriesInfo = styled.div`
+  flex: 5;
+  font-size: 14pt;
+  padding: 4px;
+`;
+
+const CategoriesButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+const CategoriesButton = styled.button`
+  display: block;
+  background-color: ${colors.color3};
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 30px;
+`;
+
 const UpdateProduct = () => {
   const [data, setData] = useState({});
   const navigate = useNavigate();
@@ -83,6 +104,14 @@ const UpdateProduct = () => {
       .catch((error) => {
         setErrorMessage("Đã có lỗi xảy ra. Vui lòng thử lại");
       });
+  };
+
+  const handleNavigateAddCate = () => {
+    navigate(`/admin/books/${id}/categories/add`);
+  };
+
+  const handleNavigateDeleteCate = () => {
+    navigate(`/admin/books/${id}/categories/delete`);
   };
 
   return (
@@ -171,6 +200,22 @@ const UpdateProduct = () => {
                 }))
               }
             />
+          </InfoItem>
+          <InfoItem>
+            <InfoItemLabel>Thể loại</InfoItemLabel>
+            <CategoriesInfo>{data.categories && data.categories.length > 0 ? data.categories.map((item) => <p>- {item.name} </p>) : ""}</CategoriesInfo>
+            <CategoriesButtonWrapper>
+              <CategoriesButton
+                onClick={handleNavigateAddCate}
+              >
+                Thêm thể loại
+              </CategoriesButton>
+              <CategoriesButton
+                onClick={handleNavigateDeleteCate}
+              >
+                Xóa thể loại
+              </CategoriesButton>
+            </CategoriesButtonWrapper>
           </InfoItem>
           <ButtonWrapper>
             <Button
