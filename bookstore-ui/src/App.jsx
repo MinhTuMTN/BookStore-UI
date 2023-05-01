@@ -61,9 +61,6 @@ const App = () => {
         <Route exact path="/books/:id" Component={ProductDetail} />
         <Route exact path="/category/:id" Component={CategiryBooks} />
 
-        <Route exact path="/admin/books/:id/categories/add" Component={AddCategoryBook} />
-        <Route exact path="/admin/books/:id/categories/delete" Component={DeleteCategoryBook} />
-
         <Route
           exact
           path="/admin/dashboard"
@@ -152,6 +149,25 @@ const App = () => {
           element={
             <AdminAuthentication>
               <AdminAddCategory />
+            </AdminAuthentication>
+          }
+        />
+        <Route
+          exact
+          path="/admin/books/:id/categories/add"
+          element={
+            <AdminAuthentication>
+              <AddCategoryBook />
+            </AdminAuthentication>
+          }
+        />
+
+        <Route
+          exact
+          path="/admin/books/:id/categories/delete"
+          element={
+            <AdminAuthentication>
+              <DeleteCategoryBook />
             </AdminAuthentication>
           }
         />
