@@ -14,22 +14,23 @@ import ProductDetail from "./pages/ProductDetail";
 import PaymentSuccessful from "./pages/PaymentSuccessful";
 import ChangePassword from "./pages/ChangePassword";
 import Cart from "./pages/Cart";
+import UserOrders from "./pages/UserOrders";
+import OrderDetails from "./pages/OrderDetails";
+import AdminOrderDetails from "./pages/admin/AdminOrderDetails/AdminOrderDetails/AdminOrderDetails";
+import CategiryBooks from "./pages/CategoryBooks";
+import Search from "./pages/Search";
+
 import AdminDashboard from "./pages/admin/home/Home";
 import AdminUsers from "./pages/admin/UserManagement/userList/List";
 import AdminProducts from "./pages/admin/ProductManagement/productList/List";
 import AdminOrders from "./pages/admin/OrderManagement/orderList/List";
 import AdminCategories from "./pages/admin/CategoryManagement/categoryList/List";
 import AdminAddProduct from "./pages/admin/ProductManagement/AddProduct";
-import AddCategoryBook from "./pages/admin/ProductManagement/AddCategoriesToProduct";
-import DeleteCategoryBook from "./pages/admin/ProductManagement/DeleteCategoriesToProduct";
 import AdminAddCategory from "./pages/admin/CategoryManagement/AddCategory";
 import AdminUpdateCategory from "./pages/admin/CategoryManagement/UpdateCategory";
 import AdminUpdateProduct from "./pages/admin/ProductManagement/UpdateProduct";
-import UserOrders from "./pages/UserOrders";
-import OrderDetails from "./pages/OrderDetails";
-import AdminOrderDetails from "./pages/admin/AdminOrderDetails/AdminOrderDetails/AdminOrderDetails";
-import CategiryBooks from "./pages/CategoryBooks";
-import Search from "./pages/Search";
+import AddCategoryBook from "./pages/admin/ProductManagement/AddCategoriesToProduct";
+import DeleteCategoryBook from "./pages/admin/ProductManagement/DeleteCategoriesToProduct";
 
 const UserAuthentication = ({ children }) => {
   if (!Cookies.get("authToken")) {
@@ -62,6 +63,7 @@ const App = () => {
 
         <Route exact path="/admin/books/:id/categories/add" Component={AddCategoryBook} />
         <Route exact path="/admin/books/:id/categories/delete" Component={DeleteCategoryBook} />
+
         <Route
           exact
           path="/admin/dashboard"
