@@ -119,7 +119,7 @@ const AddCategory = () => {
             />
           </InfoItem>
           <ButtonWrapper>
-            <Button onClick={handleCreateCategory}>Cập nhật thông tin</Button>
+            <Button onClick={handleCreateCategory}>Thêm thể loại</Button>
           </ButtonWrapper>
         </Form>
       </Right>
