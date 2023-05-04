@@ -51,7 +51,7 @@ const ProfileLeft = ({ index }) => {
   if (Cookies.get("isAdmin"))
     menuItem.splice(4, 0, {
       text: "Trang quản trị",
-      link: "/admin/dashboard",
+      link: "/admin/users",
     });
   return (
     <div>
