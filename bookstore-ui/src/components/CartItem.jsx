@@ -40,6 +40,7 @@ const DeleteButton = styled.button`
 const Image = styled.img`
   width: 100px;
   flex: 1;
+  border-radius: 30px;
 `;
 
 const ProductName = styled.span`
