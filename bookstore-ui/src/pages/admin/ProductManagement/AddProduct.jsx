@@ -160,7 +160,7 @@ const AddProduct = () => {
             />
           </InfoItem>
           <ButtonWrapper>
-            <Button onClick={handleCreateBook}>Cập nhật thông tin</Button>
+            <Button onClick={handleCreateBook}>Thêm sản phẩm</Button>
           </ButtonWrapper>
         </Form>
       </Right>
