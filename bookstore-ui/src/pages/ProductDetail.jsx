@@ -155,21 +155,26 @@ const ProductDetail = () => {
             <HR />
             <Price>{Number(book.price).toLocaleString()} VND</Price>
             <HR />
-            <AddContainer>
-              <AmountContainer>
-                <AmountButton
-                  onClick={() => (amount > 1 ? setAmount(amount - 1) : 1)}
-                >
-                  -
-                </AmountButton>
-                <Amount>{amount}</Amount>
-                <AmountButton onClick={() => setAmount(amount + 1)}>
-                  +
-                </AmountButton>
-              </AmountContainer>
-              <AddButton onClick={handleAddToCart}>THÊM VÀO GIỎ HÀNG</AddButton>
-            </AddContainer>
-
+            {Cookies.get("isAdmin") ? (
+              ""
+            ) : (
+              <AddContainer>
+                <AmountContainer>
+                  <AmountButton
+                    onClick={() => (amount > 1 ? setAmount(amount - 1) : 1)}
+                  >
+                    -
+                  </AmountButton>
+                  <Amount>{amount}</Amount>
+                  <AmountButton onClick={() => setAmount(amount + 1)}>
+                    +
+                  </AmountButton>
+                </AmountContainer>
+                <AddButton onClick={handleAddToCart}>
+                  THÊM VÀO GIỎ HÀNG
+                </AddButton>
+              </AddContainer>
+            )}
             <TabProductDetail book={book} />
           </InfoContainer>
         </Wrapper>
