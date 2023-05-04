@@ -1,5 +1,4 @@
 import "./sidebar.scss";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
@@ -11,13 +10,6 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
-          <Link to={"/admin/dashboard"} style={{ textDecoration: "none" }}>
-            <li>
-              <DashboardIcon className="icon" />
-              <span>Dashboard</span>
-            </li>
-          </Link>
           <p className="title">DANH SÁCH</p>
           <Link to="/admin/users" style={{ textDecoration: "none" }}>
             <li>

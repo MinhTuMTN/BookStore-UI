@@ -20,7 +20,6 @@ import AdminOrderDetails from "./pages/admin/AdminOrderDetails/AdminOrderDetails
 import CategiryBooks from "./pages/CategoryBooks";
 import Search from "./pages/Search";
 
-import AdminDashboard from "./pages/admin/home/Home";
 import AdminUsers from "./pages/admin/UserManagement/userList/List";
 import AdminProducts from "./pages/admin/ProductManagement/productList/List";
 import AdminOrders from "./pages/admin/OrderManagement/orderList/List";
@@ -61,15 +60,6 @@ const App = () => {
         <Route exact path="/books/:id" Component={ProductDetail} />
         <Route exact path="/category/:id" Component={CategiryBooks} />
 
-        <Route
-          exact
-          path="/admin/dashboard"
-          element={
-            <AdminAuthentication>
-              <AdminDashboard />
-            </AdminAuthentication>
-          }
-        />
         <Route
           exact
           path="/admin/users"

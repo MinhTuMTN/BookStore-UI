@@ -175,7 +175,7 @@ const Login = () => {
               const isAdmin = data["isAdmin"];
               if (isAdmin) {
                 Cookies.set("isAdmin", true);
-                window.location = "http://localhost:3000/admin/dashboard";
+                window.location = "http://localhost:3000/admin/users";
               } else window.location = "http://localhost:3000";
             });
         })
