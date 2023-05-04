@@ -22,6 +22,7 @@ const ProductDetail = styled.div`
 const Image = styled.img`
   height: 155px;
   flex: 1;
+  border-radius: 30px;
 `;
 
 const ProductName = styled.span`
